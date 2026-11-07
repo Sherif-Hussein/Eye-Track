@@ -1,0 +1,38 @@
+\begin{sidewaystable}
+\caption{Frame rate under the observed-webcam condition, Delmas et al., 75 people, 30 to 10~Hz (simulated rates). AUC at item level with a 95\% interval; change from the 30~Hz value of the same condition with a paired 95\% interval and the lower one-sided 95\% bound (a bound above $-0.02$ is inside the 0.02 margin; descriptive); change from clean data at the same rate; and dwell from samples minus fixation-based dwell (paired). Dwell from samples: the camera model, 10 features, no pupil. Fixation-based: the same model with fixations from a velocity threshold of 30$^\circ$/s and 60~ms. The condition is built from our own webcam recordings in two versions, \emph{as measured} (the slow part of the jitter as fitted) and \emph{slow jitter reduced} (the slow part scaled down until the total spread equals the measured one), each without and with a per-trial offset correction.}\label{tab:S_observed}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}c>{\centering\arraybackslash}p{2.7cm}>{\centering\arraybackslash}p{3.3cm}>{\centering\arraybackslash}p{1.0cm}>{\centering\arraybackslash}p{3.3cm}>{\centering\arraybackslash}p{2.7cm}>{\centering\arraybackslash}p{3.3cm}>{\centering\arraybackslash}p{1.0cm}>{\centering\arraybackslash}p{3.3cm}@{}}
+\toprule
+ & \multicolumn{4}{c}{Dwell from samples} & \multicolumn{3}{c}{Fixation-based} & Dwell minus \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-8}
+Rate (Hz) & AUC [95\% CI] & Change from 30~Hz [95\% CI] & Bound & Change from clean data [95\% CI] & AUC [95\% CI] & Change from 30~Hz [95\% CI] & Bound & fixation-based [95\% CI] \\
+\midrule
+\multicolumn{9}{@{}l}{\textit{As measured, no per-trial correction}} \\
+30 & 0.728 [0.693, 0.760] & (reference) & --- & $-0.045$ [$-0.064$, $-0.027$] & 0.671 [0.642, 0.697] & (reference) & --- & $+0.057$ [$+0.043$, $+0.070$] \\
+20 & 0.725 [0.689, 0.756] & $-0.003$ [$-0.013$, $+0.007$] & $-0.012$ & $-0.049$ [$-0.069$, $-0.030$] & 0.677 [0.647, 0.702] & $+0.006$ [$-0.008$, $+0.021$] & $-0.005$ & $+0.048$ [$+0.035$, $+0.059$] \\
+15 & 0.724 [0.690, 0.758] & $-0.004$ [$-0.014$, $+0.006$] & $-0.012$ & $-0.051$ [$-0.068$, $-0.033$] & 0.703 [0.673, 0.735] & $+0.032$ [$+0.017$, $+0.047$] & $+0.020$ & $+0.021$ [$+0.013$, $+0.029$] \\
+10 & 0.723 [0.686, 0.755] & $-0.005$ [$-0.015$, $+0.005$] & $-0.014$ & $-0.046$ [$-0.063$, $-0.028$] & 0.680 [0.650, 0.711] & $+0.010$ [$-0.004$, $+0.023$] & $-0.003$ & $+0.042$ [$+0.028$, $+0.056$] \\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{As measured, with per-trial correction}} \\
+30 & 0.728 [0.692, 0.762] & (reference) & --- & $-0.045$ [$-0.063$, $-0.027$] & 0.670 [0.642, 0.696] & (reference) & --- & $+0.059$ [$+0.044$, $+0.074$] \\
+20 & 0.725 [0.690, 0.756] & $-0.003$ [$-0.013$, $+0.007$] & $-0.012$ & $-0.049$ [$-0.068$, $-0.030$] & 0.673 [0.641, 0.702] & $+0.004$ [$-0.009$, $+0.017$] & $-0.007$ & $+0.052$ [$+0.044$, $+0.060$] \\
+15 & 0.724 [0.693, 0.754] & $-0.004$ [$-0.015$, $+0.007$] & $-0.013$ & $-0.050$ [$-0.069$, $-0.032$] & 0.697 [0.670, 0.726] & $+0.028$ [$+0.013$, $+0.044$] & $+0.015$ & $+0.027$ [$+0.017$, $+0.036$] \\
+10 & 0.718 [0.681, 0.751] & $-0.010$ [$-0.021$, $+0.002$] & $-0.019$ & $-0.050$ [$-0.069$, $-0.032$] & 0.675 [0.649, 0.703] & $+0.006$ [$-0.008$, $+0.019$] & $-0.005$ & $+0.043$ [$+0.031$, $+0.055$] \\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Slow jitter reduced, no per-trial correction}} \\
+30 & 0.748 [0.709, 0.781] & (reference) & --- & $-0.025$ [$-0.039$, $-0.011$] & 0.695 [0.661, 0.725] & (reference) & --- & $+0.054$ [$+0.039$, $+0.067$] \\
+20 & 0.744 [0.705, 0.780] & $-0.004$ [$-0.012$, $+0.004$] & $-0.010$ & $-0.030$ [$-0.043$, $-0.017$] & 0.704 [0.670, 0.734] & $+0.009$ [$0.000$, $+0.019$] & $+0.001$ & $+0.040$ [$+0.028$, $+0.052$] \\
+15 & 0.743 [0.703, 0.778] & $-0.005$ [$-0.015$, $+0.004$] & $-0.013$ & $-0.032$ [$-0.046$, $-0.018$] & 0.714 [0.679, 0.750] & $+0.020$ [$+0.007$, $+0.032$] & $+0.009$ & $+0.029$ [$+0.020$, $+0.036$] \\
+10 & 0.737 [0.697, 0.770] & $-0.011$ [$-0.019$, $-0.002$] & $-0.018$ & $-0.031$ [$-0.046$, $-0.016$] & 0.700 [0.665, 0.732] & $+0.006$ [$-0.006$, $+0.018$] & $-0.004$ & $+0.037$ [$+0.026$, $+0.048$] \\
+\addlinespace[2pt]
+\multicolumn{9}{@{}l}{\textit{Slow jitter reduced, with per-trial correction}} \\
+30 & 0.758 [0.715, 0.796] & (reference) & --- & $-0.015$ [$-0.027$, $-0.003$] & 0.704 [0.672, 0.736] & (reference) & --- & $+0.054$ [$+0.038$, $+0.070$] \\
+20 & 0.752 [0.708, 0.789] & $-0.006$ [$-0.014$, $0.000$] & $-0.013$ & $-0.023$ [$-0.035$, $-0.010$] & 0.708 [0.669, 0.738] & $+0.004$ [$-0.006$, $+0.012$] & $-0.004$ & $+0.044$ [$+0.031$, $+0.057$] \\
+15 & 0.754 [0.710, 0.789] & $-0.004$ [$-0.014$, $+0.004$] & $-0.013$ & $-0.021$ [$-0.031$, $-0.011$] & 0.728 [0.689, 0.762] & $+0.024$ [$+0.013$, $+0.035$] & $+0.015$ & $+0.026$ [$+0.017$, $+0.034$] \\
+10 & 0.752 [0.711, 0.788] & $-0.006$ [$-0.016$, $+0.003$] & $-0.014$ & $-0.016$ [$-0.029$, $-0.005$] & 0.715 [0.682, 0.747] & $+0.011$ [$0.000$, $+0.022$] & $+0.002$ & $+0.036$ [$+0.024$, $+0.050$] \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize
+Values copied from the stored result tables of the observed-webcam analyses. Intervals for a single AUC come from 300 and all other intervals from 2,000 paired resamples of people; the lower bound is the 5th percentile of the paired change. Folds are the fixed participant-disjoint folds (5 folds $\times$ 3 repeats within each of the six group sets), with scores averaged over the three repeats and three simulation draws per condition. The classifier tables of the main paper use one repeat of the folds only. Change from clean data is the condition minus the clean-data AUC of the same measure at the same rate (clean data, dwell from samples: 0.773, 0.774, 0.775, 0.768 at 30, 20, 15 and 10~Hz).
+\end{flushleft}
+\end{sidewaystable}

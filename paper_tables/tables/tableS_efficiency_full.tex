@@ -1,0 +1,24 @@
+\begin{sidewaystable}
+\caption{Full cost per decision. Published pipeline as we re-implemented it and ours; one participant, single thread, median of six interleaved rounds.}\label{tab:S_efficiency}
+\scriptsize\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{2.7cm}>{\centering\arraybackslash}p{1.9cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.65cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{1.4cm}>{\centering\arraybackslash}p{1.6cm}>{\centering\arraybackslash}p{2.4cm}@{}}
+\toprule
+Dataset & Pipeline & Latency p50 / p95 (ms) & Speed-up & Decisions/s & Samples/s & Real-time factor & Peak memory (kB) & Size (B) / params \\
+\midrule
+Delmas & Published SVM, 1000 Hz & 183.2 / 190.7 & & 5.5 & $1.9\times10^{6}$ & 1{,}921 & 612 & 110{,}953 / 10{,}493 \\
+ & \textbf{Ours, 30 Hz} & \textbf{3.2 / 3.3} & \textbf{58$\times$} & 317 & $3.4\times10^{6}$ & 111{,}735 & 961 (157$^{a}$) & 719 / 53 \\
+Celniak & Published SVM features, 250 Hz & 912.1 / 948.1 & & 1.1 & $1.1\times10^{5}$ & 445 & 85{,}501 & 126{,}285 / 14{,}458 \\
+ & \textbf{Ours} & \textbf{9.7 / 10.5} & \textbf{94$\times$} & 103 & $1.0\times10^{7}$ & 41{,}866 & 4{,}351 & 911 / 77 \\
+Preti, with RT & Published fusion LR & 36.5 / 38.6 & & 27 & --- & --- & 142 & 1{,}650 / 37 \\
+ & \textbf{Ours} & \textbf{0.36 / 0.41} & \textbf{102$\times$} & 2{,}795 & --- & --- & 7.2 & 1{,}455 / 145 \\
+Colasanti & Published LR (36 features) & 0.46 / 0.50 & & 2{,}157 & --- & --- & 11.9 & 953 / 37 \\
+ & \textbf{Ours} & \textbf{0.29 / 0.30} & 1.6$\times$ & 3{,}469 & --- & --- & 5.2 & 1{,}455 / 145 \\
+Chen & Published rate rule, 100 Hz & 6.6 / 7.3 & & 152 & $5.2\times10^{6}$ & 52{,}124 & 16 & 24 / 2 \\
+ & \textbf{Ours, 30 Hz} & 14.2 / 15.5 & 0.46$\times$ & 70 & $7.2\times10^{6}$ & 72{,}212 & 415 & 2{,}703 / 301 \\
+ & Pupil bins + gaze & 12.3 / 13.5 & 0.53$\times$ & 81 & $1.4\times10^{7}$ & 139{,}178 & 479 & 8{,}495 / 126 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize
+$^{a}$ 157~kB at 9.6~ms with eight images at a time. ---: not defined for exported tables. RT: reaction time.
+\end{flushleft}
+\end{sidewaystable}

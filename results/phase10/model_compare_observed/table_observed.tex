@@ -1,0 +1,25 @@
+% Task 2.2c Part B (exploratory). Item AUC = mean over 3 noise draws, repeat 0 of the frozen participant-disjoint folds, 30 Hz, dwell from samples, 10 features, no per-trial correction.
+\begin{table}[t]
+\centering
+\caption{Logistic regression, XGBoost and their 50/50 ensemble on the simulated observed-webcam data (30\,Hz, 10 features, mean of 3 noise draws). Item AUC = known item against unknown items; person AUC = known against simulated-unknown person statistic.
+Change = difference from logistic regression with a 95\% paired participant-cluster bootstrap interval. $p$ = paired score-swap $p$ after Holm adjustment over 4 comparisons (XGBoost and ensemble in two conditions), item and person level separately.
+Verdict: better or worse = interval excludes zero and Holm $p<.05$; none = no reliable difference. EER = equal error rate; HTER = half total error rate at the threshold set on the training participants for 7\% false alarms.
+Reduced slow jitter: the slow component of the simulated webcam jitter scaled down so that its total SD equals the measured residual SD. The ensemble was examined earlier on other noise and is exploratory.}
+\label{tab:models_observed}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccccccccc}
+\toprule
+Model & Item AUC & Change & $p$ & Verdict & EER & HTER & Person AUC & Change & $p$ & Verdict \\
+\midrule
+\multicolumn{11}{l}{\textit{Observed webcam (full slow jitter)}} \\
+Logistic regression & 0.724 & reference & -- & ref. & 0.319 & 0.370 & 0.839 & reference & -- & ref. \\
+XGBoost & 0.712 & $-0.012$ [$-0.022$, $+0.000$] & 0.151 & none & 0.335 & 0.368 & 0.802 & $-0.036$ [$-0.066$, $-0.004$] & 0.088 & none \\
+Ensemble (LR + XGBoost) & 0.729 & $+0.006$ [$+0.000$, $+0.011$] & 0.151 & none & 0.323 & 0.358 & 0.825 & $-0.014$ [$-0.032$, $+0.004$] & 0.237 & none \\
+\multicolumn{11}{l}{\textit{Observed webcam (reduced slow jitter)}} \\
+Logistic regression & 0.746 & reference & -- & ref. & 0.299 & 0.344 & 0.861 & reference & -- & ref. \\
+XGBoost & 0.735 & $-0.011$ [$-0.023$, $+0.003$] & 0.151 & none & 0.310 & 0.341 & 0.847 & $-0.014$ [$-0.040$, $+0.015$] & 0.614 & none \\
+Ensemble (LR + XGBoost) & 0.758 & $+0.012$ [$+0.006$, $+0.017$] & 0.002 & better & 0.295 & 0.338 & 0.862 & $+0.001$ [$-0.013$, $+0.016$] & 0.859 & none \\
+\bottomrule
+\end{tabular}}
+\end{table}

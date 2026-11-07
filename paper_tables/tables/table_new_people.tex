@@ -1,0 +1,19 @@
+\begin{table}[!htbp]
+\caption{Accuracy on new people: the full model on every development dataset. $\Delta$: ours minus the cited study's method as we re-implemented it, on the same folds, with 95\% interval. Holm $p$ over the seven planned tests, from the paired bootstrap and the paired swap test.}\label{tab:new}
+\footnotesize\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.7cm}>{\centering\arraybackslash}p{1.2cm}cccc>{\centering\arraybackslash}p{2.95cm}>{\centering\arraybackslash}p{1.2cm}@{}}
+\toprule
+Study (dataset and method) & Published method$^{e}$ & Our AUC & 95\% CI & EER & HTER & $\Delta$ [95\% CI] & Holm $p$: bootstrap / swap \\
+\midrule
+\citet{delmas2024}$^{a}$ & 0.781 & 0.785 & (0.568--0.924)$^{b}$ & 0.264 & 0.263 & $+0.004$ [$-0.015$, $+0.023$]$^{c}$ & .192 / .185 \\
+\citet{chen2026} & 0.770 & 0.855 & [0.791, 0.914] & 0.232 & 0.247 & $+0.085$; $+14.9$ pts [$+1.2$, $+28.0$]$^{d}$ & .114 / .295 \\
+\citet{celniak2026scirep} & 0.608 & 0.461 & [0.267, 0.655] & 0.496 & 0.469 & $-0.147$ [$-0.307$, $+0.008$] & $>$.99 / .450 \\
+\citet{colasanti2024}, knew vs did not & 0.605 & 0.664 & [0.581, 0.741] & 0.377 & 0.367 & $+0.059$ [$-0.040$, $+0.161$] & .351 / .678 \\
+\citet{colasanti2024}, group 2 vs 3 & 0.690 & 0.601 & [0.467, 0.723] & 0.349 & 0.353 & $-0.089$ [$-0.233$, $+0.056$] & $>$.99 / .678 \\
+\citet{preti2026}, eyes only & 0.380 & 0.569 & [0.421, 0.719] & 0.462 & 0.475 & $+0.189$ [$+0.042$, $+0.342$] & .045 / .185 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\scriptsize
+$^{a}$ Item level. The range, EER, HTER and Holm $p$ come from the planned test, a separate run of the same model on the same folds, which gave 0.781 and $+0.000$ [$-0.022$, $+0.020$], with non-inferiority not established; all other rows at the participant level. $^{b}$ Range over the six Delmas et al.\ group sets, not a confidence interval. $^{c}$ Non-inferiority test (margin 0.02 AUC). $^{d}$ AUC difference, then the planned test: difference in people detected at a nominal 7\% threshold. $^{e}$ The cited study's method as we re-implemented it on our folds; its published values differ (e.g.\ 0.82--1.00 for Delmas et al.). Colasanti et al.: ``knew'' = groups that took the items, against groups that did not; group 2 took an item and lied, group 3 visited the scene innocently. Intervals are not adjusted; $p$ values are Holm-adjusted over seven planned tests, which also included the lying task with reaction time (ours 0.964 against 0.928, Holm $p$ .250 / .678), left out of this table.
+\end{flushleft}
+\end{table}

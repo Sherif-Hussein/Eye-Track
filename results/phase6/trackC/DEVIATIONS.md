@@ -1,0 +1,10 @@
+# Track C: deviations from PREREG.md
+
+Logged after the PREREG was written (2026-11-02). Each entry: what changed, why, whether any result had been seen.
+
+1. C2, provenance of r = 0.77: the PREREG listed the aggregation definitions to try. Result: no definition returns 0.77 at 30 Hz (details in `c2_provenance.csv`). No change of plan; recorded here because the PREREG allowed for "the definition that returns 0.77, if one exists".
+2. C3, calibration/validation error (Delmas, Chen): the first C3 run read every EyeLink "VALIDATION" line, including failed validations in which the eye was not found (average error of 1e5 degrees or more). That run was discarded before any table was written. The final script excludes validations with an average error of 100 degrees or more and reports their number (Delmas 1, Chen exp 2: 2, Chen exp 1: 0). Chen validation lines exist for 22 of 29 (exp 1) and 22 of 27 (exp 2) participants only; the rest are reported as missing. Not in the PREREG, which only said "where the data has it".
+3. C2: a bootstrap CI of the parser-agreement r (500 participant resamples, seed 0) and per-group r (`c2_parser_agreement_by_group.csv`) were added. The PREREG named point estimates only. No pre-specified quantity changed.
+4. C1: the "loss only" condition does not depend on the level (10% loss at every level, as in the webcam PREREG), so its five rows are identical. By design, not an error.
+5. C3: Colasanti is in the table from the paper text (no sample data). Liar's Dice was omitted (the data may only be used with the authors' permission and holds no quality variables that the PREREG asked for). Mazza is the Colasanti data.
+6. C1 and C3 runs were interrupted by a usage limit and resumed from checkpoints; no finished result was changed. Completeness check against the PREREG before finalising: C1 (133 configurations, 4 code checks pass), C2 (six rates, provenance, saccade table), C3 (five datasets) are complete; nothing was left to run. `results.json` and `card.md` come from `scripts/phase6_trackC_finalize.py`, which only reads finished outputs.

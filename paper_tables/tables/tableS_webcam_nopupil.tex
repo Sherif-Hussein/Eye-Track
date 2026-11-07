@@ -1,0 +1,22 @@
+\begin{table}[!htbp]
+\caption{Simulated webcam-level error without pupil features (Delmas et al., 30~Hz, 75 people). Dwell from samples against fixation-based dwell. AUC and difference from the published model at 1000~Hz (0.781), paired participant bootstrap 95\% interval; the lower part shrinks each face area.}\label{tab:S_nopupil}
+\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Added error & Dwell from samples: AUC & $\Delta$ [95\% CI] & Fixation-based: AUC & $\Delta$ [95\% CI] \\
+\midrule
+None & 0.773 & $-0.008$ [$-0.027$, $+0.010$] & 0.786 & $+0.005$ [$-0.014$, $+0.023$] \\
+1$^\circ$ & 0.774 & $-0.007$ [$-0.026$, $+0.010$] & 0.754 & $-0.027$ [$-0.047$, $-0.009$] \\
+2$^\circ$ & 0.773 & $-0.008$ [$-0.026$, $+0.008$] & 0.727 & $-0.054$ [$-0.075$, $-0.035$] \\
+3$^\circ$ & 0.767 & $-0.014$ [$-0.032$, $+0.003$] & 0.705 & $-0.076$ [$-0.101$, $-0.051$] \\
+4$^\circ$ & 0.746 & $-0.035$ [$-0.056$, $-0.015$] & 0.647 & $-0.135$ [$-0.163$, $-0.105$] \\
+Measured webcam values & 0.774 & $-0.007$ [$-0.026$, $+0.009$] & 0.734 & $-0.047$ [$-0.068$, $-0.026$] \\
+\midrule
+\multicolumn{5}{@{}l}{Face area at measured webcam values, AUC (dwell from samples / fixation-based):} \\
+\multicolumn{5}{@{}l}{\quad full size, 8.6$^\circ$ $\times$ 11.4$^\circ$: 0.774 / 0.734; \; 75\%: 0.767 / 0.725; \; 50\%: 0.754 / 0.712} \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize
+Removing the pupil features changes AUC by at most 0.005 at any level (all intervals include zero). Dwell from samples minus fixation-based dwell (paired, 95\% interval): $+0.039$ [$+0.022$, $+0.056$] at measured webcam values and $-0.013$ [$-0.023$, $-0.002$] on clean data. No condition is non-inferior at the 0.02 margin after Holm adjustment over the 14 no-pupil conditions.
+\end{flushleft}
+\end{table}

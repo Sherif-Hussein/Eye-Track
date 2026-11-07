@@ -1,0 +1,32 @@
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  node distance=9mm and 0.04\linewidth,
+  box/.style={draw, rounded corners=2pt, align=center, text width=0.205\linewidth,
+              minimum height=15mm, inner sep=3pt, line width=0.7pt,
+              execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  src/.style={box, draw=black!50, text=black!70, dashed},
+  ours/.style={box, fill=black!10, line width=1.1pt},
+  arr/.style={-{Stealth[length=2.4mm, width=1.8mm]}, line width=1pt}
+]
+\node[src] (s1) {\textbf{1\enspace Recording}\\[1pt] research tracker, or simulated webcam};
+\node[src, right=of s1] (s2) {\textbf{2\enspace Gaze samples}\\[1pt] position on the screen, 10--1000~Hz};
+\node[box, right=of s2] (s3) {\textbf{3\enspace Preprocessing}\\[1pt] anti-aliased resampling (simulated low rates and noise enter here); blinks marked or filled};
+\node[box, right=of s3] (s4) {\textbf{4\enspace Looking on each item}\\[1pt] dwell directly from samples, or from detected fixations};
+\node[ours, below=12mm of s1] (s5) {\textbf{5\enspace Features}\\[1pt] dwell over time, visits, first look; scaled within each person};
+\node[ours, right=of s5] (s6) {\textbf{6\enspace Model}\\[1pt] small L2 logistic regression};
+\node[ours, right=of s6] (s7) {\textbf{7\enspace Person score}\\[1pt] combines the item scores; threshold set on other people};
+\node[box, right=of s7] (s8) {\textbf{8\enspace Output}\\[1pt] a recognition score, with its error rates};
+
+\draw[arr] (s1) -- (s2);
+\draw[arr] (s2) -- (s3);
+\draw[arr] (s3) -- (s4);
+\draw[arr, rounded corners=3pt] (s4.south) -- ++(0,-6mm) -| (s5.north);
+\draw[arr] (s5) -- (s6);
+\draw[arr] (s6) -- (s7);
+\draw[arr] (s7) -- (s8);
+\end{tikzpicture}
+\caption{Pipeline. Steps run left to right in two rows. Dashed boxes depend on the sensor; shaded boxes are the small model evaluated here.}
+\label{fig:pipeline}
+\end{figure}

@@ -1,0 +1,24 @@
+# Task 2.2c Part B PLAN: logistic regression, XGBoost and the 50/50 ensemble on the observed-webcam data (EXPLORATORY, development data only)
+
+Written 2026-11-07 before any run of this part. Rules are those of the card `docs/task_observed_sensitivity_and_models.md` (Part B), fixed before any of these runs. Output folder `results/phase10/model_compare_observed/`; nothing is written elsewhere. The held-out data (`data/external/vdc2024`, `results/phase9/vdc_heldout`) are not read. No camera. Numbers only. Wording: known item / unknown item. The ensemble was looked at earlier on other noise (Task M2, `results/phase10/model_compare/ADDENDUM_ensemble.md`), so it stays exploratory here.
+
+## Conditions (both 30 Hz, dwell from samples, 10 features, no pupil, no per-trial correction, noise draws 1-3, AUC = mean over the draws)
+- OBS   = the 2.2b observed-webcam features, correction 'none', from `results/phase9/low_rate_observed/features/r30_p<id>.pkl` (read only).
+- OBS_R = the Part A reduced-slow-jitter features, correction 'none', from `results/phase9/low_rate_observed/sensitivity/features/r30_p<id>.pkl`. OBS_R is started only after Part A has finished.
+
+## Models and engine (as Task M2; nothing re-implemented)
+Logistic regression (the engine's frozen spec, C in {0.01, 0.1, 1, 10}), XGBoost (8-setting grid, subsample 0.8, colsample 0.8, scale_pos_weight, hist, one thread, random_state = outer repeat, tuned inside the training participants on a 4-fold StratifiedGroupKFold, first maximum wins; 300-tree prefix shortcut) and the 50/50 ensemble (z-scale from each model's own inner-fold training scores, no retraining), all through `results/phase10/model_compare/mc_lib.py`, `mc_run.py`, `mc_ens.py`, `mc_eval.py` and `results/phase10/model_search/ms_lib.py`, `ms_eval.py`, imported unchanged (`mco_lib.py` redirects every write to this folder: mc_lib.HERE, ms_lib.OUT, ms_lib.CK, mc_run.CK, mc_eval.CK, mc_ens.CK). No LightGBM, CatBoost or SVM. Repeat 0 of the frozen folds for all three models (as in M2); the logistic regression is run for 3 repeats for the reproduction.
+
+Condition class (detail the card leaves open): `ObsCond` in `mco_lib.py` subclasses `ms_lib.DelmasCond`; its constructor reads the stored feature files instead of simulating noise. The image-level table is built by `s2_sim.table_for(arr, "sb", 30, books)` (= `C1.make_table`, the call of `s4_run.cv_stage`), the feature columns are the engine's `W30` convention (the 10 non-pupil features of `SB_NAMES`, suffix `_z`). The engine's time-course (`tc`) and scan-path blocks require the sample grids, which are not stored in the feature files; they are filled with zeros. Only models that read them use them (PCA, catch22, scan-path); logistic regression, XGBoost and the ensemble read the `base` block only.
+
+## Reproduction first
+Logistic regression through the engine, 3 repeats, six group sets, per draw, against `results/phase9/low_rate_observed/checkpoints/sbnp_obsnone_30Hz_d<draw>_oof.csv.gz`, the same definition of pooled AUC as 2.2b (`lr_common.pooled_auc`: repeat-averaged out-of-fold scores, AUC pooled within each set, mean over the six sets). A difference above 0.0005 in any draw stops the task and is reported (`repro_FAILED_*.json`). The maximum score difference is also stored (`repro_OBS.json`). For OBS_R the same check is made against the Part A file of the same name in `sensitivity/checkpoints` (the same rule, an extra check).
+
+## Tests (mc_eval.py, unchanged)
+Item AUC pooled per set, repeat-averaged scores, mean over six sets, mean over three draws. Paired participant-cluster bootstrap, 2000 resamples, seed 20261106 (participants within each set; all models on the same resamples); paired score swap, 2000 swaps, seed 20261107, two-sided; person level as in M2 (Delmas CIT statistic; bootstrap seed + 1, swap seed + 1). Holm over the 4 rows (XGBoost and ensemble x OBS and OBS_R) at item level, and separately over the same 4 rows at person level. Verdict: better = interval of the difference from logistic regression above zero and Holm p < .05; worse = interval below zero and Holm p < .05; otherwise no reliable difference. Ensemble minus XGBoost: interval only (labelled extra). EER, HTER (HTER at the 7% false-alarm threshold set on the training participants' inner scores, as M2) at item and person level.
+
+## Pre-set reading for the app (fixed now)
+"Worth considering for the app later" needs the ensemble's person-level interval above zero with person-level Holm p < .05 in BOTH OBS and OBS_R. Otherwise logistic regression stays the only live model. The card states which applies.
+
+## Files
+`mco_lib.py`, `mco_run.py`, `mco_eval.py`, `mco_report.py`, `ck/` (fold records), `repro_OBS.json`, `repro_OBS_R.json`, `results_item_person.csv/json` (mc_eval output), `results_table.csv`, `results.json`, `table_observed.tex`, `card.md`, logs `log_*.txt`. Cost is not measured again (it is in M2).

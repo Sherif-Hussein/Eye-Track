@@ -1,0 +1,20 @@
+\begin{table}[!htbp]
+\caption{Published results beside our re-implementations, by study. Columns 4 to 6 are the values of the main paper's table of accuracy on new people: AUC at the person level (Delmas et al.: item level, mean of the per-fold AUCs), the cited study's method as we re-implemented it on our folds, our pipeline, and the difference (ours minus theirs, 95\% interval).}\label{tab:S_levelA}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.6cm}@{}}
+\toprule
+Study (unit) & Published & Reproduced, following the study's protocol as described & Their method on our folds & Our pipeline & Difference [95\% CI] \\
+\midrule
+\citet{celniak2026scirep} (person) & Accuracy 0.95, AUC 1.00 & Our implementation, with the best of 216 settings chosen on the scored folds: accuracy 0.72, AUC 0.67--0.72 & 0.608 & 0.461 & $-0.147$ [$-0.307$, $+0.008$] \\
+\citet{delmas2024} (item) & AUC .82--1.00 by group (mean 0.96, our calculation) & Released table: within $\pm$0.02 in five of six group sets (group 3, 32 trials: 0.937 against 0.82); with the published model, 0.995 & 0.781 (published four features, SVM, rebuilt from the raw samples) & 0.785 & $+0.004$ [$-0.015$, $+0.023$] (planned non-inferiority test: 0.781, $+0.000$ [$-0.022$, $+0.020$]) \\
+\citet{chen2026} (person; detection at a 7\% false-alarm threshold) & Detection 55.2\% and 33.3\% (rate), 34.5\% and 18.5\% (size) in the two experiments; false-alarm rate not reported & Experiment 1: 15 of 29 people (published 16), 10 of 29; Experiment 2: 8 of 27 (published 9), 5 of 27 & AUC 0.770 (rate rule); detection 42.9\% & AUC 0.855; detection 57.7\% & AUC $+0.085$ [$+0.010$, $+0.155$]; detection $+14.9$ points [$+1.2$, $+28.0$] \\
+\citet{preti2026}, eyes only (person) & ``Up to'' accuracy .84 (eyes and reaction time together) & Not attempted (protocol details not available to us) & 0.380 & 0.569 & $+0.189$ [$+0.042$, $+0.342$] \\
+\citet{preti2026}, with reaction time (person) & As above & As above & 0.928 & 0.964 & $+0.036$ [$-0.005$, $+0.088$] \\
+\citet{colasanti2024}, group 2 vs 3 (person) & AUC 0.72, accuracy 65.4\% & AUC $0.674 \pm 0.033$ over 10 seeds & 0.690 & 0.601 & $-0.089$ [$-0.233$, $+0.056$] \\
+\citet{colasanti2024}, knew vs did not (person) & Not reported for this contrast (group 2 vs 1: 0.61; 2 vs 4: 0.66; four classes: 0.63, accuracy 40.1\%) & Four classes: 0.602, accuracy 35.4\% & 0.605 & 0.664 & $+0.059$ [$-0.040$, $+0.161$] \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize
+The original studies used other protocols (for example other ways of separating people between training and test, and other units), so these columns are not directly comparable with the published figures. Colasanti et al.: ``knew'' = the groups that took the items; group 2 took an item and lied, group 3 visited the scene without taking one. Chen et al.: detection is the share of the 56 people flagged at a threshold set on training people; the other columns use the person-level AUC. Published and reproduced values come from the original papers and from our reproductions of them.
+\end{flushleft}
+\end{table}

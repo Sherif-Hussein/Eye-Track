@@ -1,0 +1,25 @@
+% Task M2 (exploratory). AUC = item AUC, one repeat of the frozen participant-disjoint folds. Change = difference from logistic regression, 95% paired participant bootstrap.
+% Times: CPU, one thread, Intel Core i7-8550U, one light statistics job running.
+\begin{table}[t]
+\centering
+\caption{Other classifiers compared with the logistic regression on the same folds (item AUC; full model: clean 30\,Hz, 13 features; camera model: webcam-level noise, 10 features, mean of 3 noise draws).
+Change = difference from logistic regression with a 95\% participant-cluster bootstrap interval. Size = pickled model. Score = CPU ms to score all items of one person from features; fit = CPU s for one fit;
+core = share of one CPU core if the four items of each 5\,s display are scored in real time; work = operations (logistic regression), support vectors $\times$ features (SVM) or tree nodes visited (boosted trees) per item (full model).
+The ensemble averages the z-scaled scores of logistic regression and XGBoost with equal weights; it was examined after an initial look at the data and is exploratory. $^{*}$ better and $^{\dagger}$ worse than logistic regression (interval excludes zero and Holm-adjusted $p<.05$ over 10 comparisons); no mark = no reliable difference.
+Times were measured on a laptop (Intel Core i7-8550U, one thread) with one light statistics job running on the machine.}
+\label{tab:models}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccrrrrr}
+\toprule
+Model & AUC full & AUC camera & Change, full & Change, camera & Size & Score (ms) & Fit (s) & Core (\%) & Work per item \\
+\midrule
+Logistic regression & 0.782 & 0.771 & reference & reference & 1.8 kB & 0.71 & 0.01 & 0.014 & 52 \\
+XGBoost & 0.770 & 0.778 & $-0.013$ [$-0.029$, $+0.005$] & $+0.007$ [$-0.009$, $+0.025$] & 98.2 kB & 1.87 & 0.16 & 0.035 & 200 \\
+LightGBM & 0.766 & 0.767 & $-0.017$ [$-0.035$, $+0.004$] & $-0.004$ [$-0.020$, $+0.014$] & 62.5 kB & 1.02 & 0.03 & 0.017 & 220 \\
+CatBoost & 0.776 & 0.781 & $-0.006$ [$-0.022$, $+0.012$] & $+0.010$ [$-0.005$, $+0.026$] & 41.5 kB & 1.38 & 0.25 & 0.027 & 400 \\
+RBF-kernel SVM & 0.782 & 0.775 & $-0.000$ [$-0.015$, $+0.015$] & $+0.004$ [$-0.004$, $+0.014$] & 32.2 kB & 2.18 & 0.01 & 0.018 & 3\,224 \\
+Ensemble (LR + XGBoost) & 0.790 & 0.789 & $+0.008$ [$-0.000$, $+0.015$] & $+0.018$ [$+0.009$, $+0.027$]$^{*}$ & 99.5 kB & 2.91 & 0.15 & 0.057 & 258 \\
+\bottomrule
+\end{tabular}}
+\end{table}

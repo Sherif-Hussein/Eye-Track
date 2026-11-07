@@ -1,0 +1,46 @@
+# DEVIATIONS: Phase 6 Track B
+
+(Entries are added in time order. Pre-registered amendments are in PREREG.md and are not deviations.)
+
+## D1 (2026-11-02 14:37) launch bug, no recorded result affected
+The first production launch of the two Mazza tasks used the task name `guilty_vs_innocent` / `g2_vs_g3` as the key of the seed table (KeyError). Every attempt failed before any result was produced and nothing was written to `perms/`. Fixed by using the registered task names `mazza_g2_vs_g3` (id 5) and `mazza_guilty_vs_innocent` (id 6), as in the PREREG. Seeds unchanged.
+
+## D2 (2026-11-02 15:05) repeats per permutation reduced from 3 to 1 for Delmas, Chen, Celniak and Preti (PREREG Amendment 2)
+Reason: measured cost. Under the shared machine (other tracks use all cores) one permutation took about 1,250 s (Celniak), 1,300 s (Preti), 540 s (Chen), 200 s (Mazza) of wall time per worker; the floor of 200 permutations for all tasks plus 200 B2 shuffles needed about 450,000 CPU-seconds (about 125 CPU-hours), several times the budget. Nested re-tuning (the point of the test) and N >= 200 were kept; the number of cross-validation repeats inside each permutation was reduced, equally for the baseline and our pipeline of the same task.
+- Delmas, Chen, Celniak, Preti: only repeat 0 of the frozen folds (and, for the rebuilt paired folds, repeat 0 = seed 2026, as in the frozen files) is run in each permutation. The statistic and the observed values are the same statistics computed from repeat 0 only. The observed values are recomputed by the identity run with R = 1 and cross-checked against the stored repeat-0 out-of-fold scores of Phase 2 / Phase 4 (no refitting). The Phase 4 three-repeat values stay as the reference in the card.
+- Mazza (both tasks) keeps its stored repeats (baseline 3, ours 5): cheap enough.
+- B2 is unchanged (it already uses one pairing seed per shuffle).
+- Permutations already recorded under the 3-repeat design (Celniak 1, Chen 1, Preti 1) were set aside in `discarded_3repeat_start/` and are not used; Mazza G2 vs G3 permutations (6 at that time) are kept because that task did not change. The decision was taken before any recorded value was examined (only per-permutation run times were inspected).
+- Consequence: a single-repeat statistic is noisier than the repeat-averaged one, so the null is wider and the test somewhat less powerful than the 3-repeat design; the comparison of observed and null is like for like.
+
+## D3 (2026-11-02 15:17) minimum N lowered from 200 to 100 for tasks that cannot reach 200 within the time budget (PREREG Amendment 3; decision relayed by the coordinator from the user)
+- Budget: about 10 h wall clock counted from the start of B1 production (2026-11-02 14:37), i.e. until 2026-11-03 00:37. The same clock and rule apply to B2.
+- Tasks that can reach 200 or more inside the budget keep running to 200 (cheap ones such as Mazza up to 1,000 if time allows). A task that cannot reach 200 stops at the last complete block of 25 when the budget is used, with a floor of 100 (Celniak, Preti and B2 are expected to be affected). If even 100 is not reached by the deadline, the shortfall is reported as is.
+- The stopping rule depends only on elapsed time. No interim p-value is computed or looked at to decide about stopping, N or rebalancing; the summarise script is not run on partial data until the runs end.
+- Final N per task and the p-value resolution 1/(N+1) are reported.
+- Workers may be rebalanced between tasks (the runs are resumable and seeds are a function of (task, permutation index)); this changes nothing in the statistics.
+
+## Coordinator note (2026-11-02 15:51)
+- The Track B agent hit an API usage limit at about 15:45, which stopped its background worker processes. The coordinator relaunched the same runs at 15:51 with the same targets (Delmas, Chen, Celniak and Preti at N=200; both Colasanti tests at N=200; B2 at N=200). The workers are Celniak 2, Preti 2, Chen 1, Delmas 1, Colasanti 1 and B2 2. Each run resumed from perms/*.jsonl and perms_b2 (already done: Delmas 14, Chen 10, Celniak 11, Preti 23, Colasanti 25+6, B2 10). No permutation was dropped or redrawn, and no interim p-value was looked at.
+- The D3 deadline (2026-11-03 00:37) is not enforced by the scripts, so the runs must be stopped at the deadline, keeping only complete blocks of 25 as D3 says.
+
+## D4 (2026-11-02 16:58) extra B2 worker added (no run was stopped; statistics unchanged)
+Throughput check at 16:54 (CPU per permutation: Celniak 217 s, Chen 120 s, Delmas 94 s, Preti 105 s, Mazza 57-65 s, B2 about 400 s; each worker gets about half a core) projected B2 to about 75 shuffles by the deadline with 2 workers, below the D3 floor of 100. A third B2 worker was started with `--reverse` (it takes shuffle indices 199, 198, ... downward; the forward workers take ascending indices). Shuffles are exchangeable and each uses its own seed (a function of its index), so which indices are run does not matter; the summary uses only complete blocks of 25 indices (D3) and de-duplicates indices. No interim p-values were looked at.
+
+## Coordinator note (2026-11-02 18:52)
+- The Claude Code session restarted and the workers relaunched at 15:51 ended with it. Recorded so far: Delmas 72, Chen 57, Celniak 62, Preti 131, Colasanti 72+50; B2 about 60. All were relaunched at 18:52 as detached processes (same targets; Celniak 2, Chen 2, Preti 2, Delmas 1, Colasanti 1, B2 forward 1 and reverse 1 workers), resuming from checkpoints. Nothing was dropped or redrawn, and no interim p-value was looked at. A detached deadline timer (scripts/_trackB_deadline_stop.ps1) stops all runs at 2026-11-03 00:37:30.
+
+## Coordinator note (2026-11-03 05:05)
+- The deadline timer did not fire at 00:37:30. The laptop most likely slept, which pauses the timer's Start-Sleep, so the runs continued until the coordinator stopped them at 05:05. Under the time-only rule D3, ONLY permutations completed before 2026-11-03 00:37:30 are analysed, truncated to the last complete block of 25 per task. Later permutations stay on disk and are marked excluded. No interim p-value was looked at.
+- **Cutoff evidence** (scripts/_trackB_sleep_gap.py): each results file holds one or two records with wall-clock 'seconds' of about 24,500-25,000 s, while the medians are 81-520 s. These records spanned the laptop's sleep, from about 22:10 until about 05:00. Records BEFORE the first sleep-spanning record finished before the sleep, so before 00:37:30. Records from it onward finished after waking and are EXCLUDED.
+  - Pre-deadline records in completion order: Chen 130, Delmas 124, Colasanti G2vG3 103, Preti 193, B2 76.
+  - Celniak (106) and Colasanti guilty-vs-innocent (100) have no sleep-spanning record: their in-flight permutations were killed at 05:03 and never written, so all their records are pre-deadline.
+  - D3 then truncates each task to its last complete block of 25.
+
+## D5 (2026-11-03) final inclusion rule and final N (analysis applied by the Track B agent after the coordinator stopped all runs)
+- Records used: only those completed before the laptop sleep gap (first record with wall-clock seconds above 20,000 and everything after it excluded; counts verified with `scripts/_trackB_sleep_gap.py`: Chen 130, Delmas 124, Mazza G2vG3 103, Preti 193, B2 76; Celniak 106 and Mazza guilty-vs-innocent 100 have no sleep-spanning record), then truncated to complete blocks of 25 permutation indices (D3). Excluded records stay on disk and are listed in `results.json` (`inclusion`) and `card.md`; they are not used.
+- Final N: Delmas 100, Chen 125, Celniak 100, Preti A and B 175, Mazza G2 vs G3 100, Mazza guilty vs innocent 100; B2 50 shuffles. The floor of 100 (D3) is met by every B1 task; B2 is below it (50): its two-direction worker layout (forward and reverse, D4) left many incomplete blocks (76 pre-sleep shuffles, 26 in incomplete blocks). The B2 shortfall is reported as is; a descriptive supplement with all 76 pre-sleep shuffles gives similar p-values (card.md).
+- The targets of 200 were not reached for any task (time budget, sleep gap and shared machine). p-value resolution is 1/(N+1): 0.0099 (N=100), 0.0079 (125), 0.0057 (175), 0.0196 (B2, N=50).
+- The PREREG sensitivity "real labels at pairing seeds 3-10" for B2 (`b2_real_label_reference.csv`) was not run (no further compute was launched after the stop); only the two published reproduction seeds (1 and 2, re-verified exactly in the verification run: acc 0.7179 and AUC 0.7211 / 0.6711, diff 0) are used as the real-label reference. The planned verbatim-versus-cached comparison of all 216 grid points was interrupted when its process was stopped to free CPU; the cached implementation reproduced the stored real-label values of seeds 1 and 2 exactly.
+- Observed values of Delmas, Chen, Celniak and Preti are the repeat-0 values (D2). The Phase 4 three-repeat values (Preti A: baseline 0.380, ours 0.569, delta +0.189; Celniak delta -0.147; Chen detection +0.149; Delmas delta +0.0002) are given in the report for reference but the permutation p-values apply to the repeat-0 statistics.
+- Interim p-values were not computed or inspected before the final summary (the summarise script was first run on the final selection).

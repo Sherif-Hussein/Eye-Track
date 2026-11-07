@@ -1,0 +1,1 @@
+Data files of figures from the earlier paper drafts, kept because later checks read them (`results/phase9/low_rate/s2_delmas_curve.py`) and `paper_rec` numbers trace back to them. Comments in scripts that name `paper/figures/` mean these files.

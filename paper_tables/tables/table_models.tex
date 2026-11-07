@@ -1,0 +1,41 @@
+\begin{table}[!htbp]
+\caption{Other classifiers against logistic regression on the same folds, Delmas et al., one repeat. AUC at item level, with the paired 95\% interval of the change from logistic regression, and at person level. Full model: clean 30~Hz, 13 features. Camera model: measured webcam noise, 10 features, mean of three draws.}\label{tab:models}
+\footnotesize\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{3}{c}{Full model} & \multicolumn{3}{c}{Camera model} \\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Model & Item & Change [95\% CI] & Person & Item & Change [95\% CI] & Person \\
+\midrule
+Logistic regression & 0.782 & reference & 0.888 & 0.771 & reference & 0.874 \\
+XGBoost & 0.770 & $-0.013$ [$-0.029$, $+0.005$] & 0.873 & 0.778 & $+0.007$ [$-0.009$, $+0.025$] & 0.873 \\
+LightGBM & 0.766 & $-0.017$ [$-0.035$, $+0.004$] & 0.853 & 0.767 & $-0.004$ [$-0.020$, $+0.014$] & 0.856 \\
+CatBoost & 0.776 & $-0.006$ [$-0.022$, $+0.012$] & 0.873 & 0.781 & $+0.010$ [$-0.005$, $+0.026$] & 0.863 \\
+RBF-kernel SVM & 0.782 & $0.000$ [$-0.015$, $+0.015$] & 0.855 & 0.775 & $+0.004$ [$-0.004$, $+0.014$] & 0.856 \\
+Average$^{a}$ & 0.790 & $+0.008$ [$0.000$, $+0.015$] & 0.887 & 0.789 & $+0.018$ [$+0.009$, $+0.027$] & 0.876 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\scriptsize
+$^{a}$ Logistic regression and XGBoost, equal weights on scores scaled from the training people; examined after a first look at the data, so exploratory. Holm over the ten comparisons: $p=.005$ for the average on the camera model, $p\geq.71$ for all others; no person-level comparison was reliable.
+\end{flushleft}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Cost of the classifiers in Table~\ref{tab:models} on one laptop core, full model: size of the whole fitted pipeline as a Python pickle (imputer, scaler and model), CPU time to score one person from precomputed features, CPU time for one fit, and growth in peak memory.}\label{tab:modelcost}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Model & Size (kB) & Score (ms) & Fit (s) & Memory (MiB) \\
+\midrule
+Logistic regression & 1.8 & 0.71 & 0.01 & 1.2 \\
+XGBoost & 98.2 & 1.87 & 0.16 & 10.2 \\
+LightGBM & 62.5 & 1.02 & 0.03 & 8.4 \\
+CatBoost & 41.5 & 1.38 & 0.25 & 19.1 \\
+RBF-kernel SVM & 32.2 & 2.18 & 0.01 & 1.9 \\
+Average of logistic regression and XGBoost & 99.5 & 2.91 & 0.16$^{a}$ & 10.5 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\scriptsize
+$^{a}$ Taken as the fit time of its XGBoost part; fit times are accurate to about $\pm$30\%.
+\end{flushleft}
+\end{table}

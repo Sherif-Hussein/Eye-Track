@@ -1,0 +1,1115 @@
+{
+ "meta": {
+  "status": "exploratory, post-review; not pre-registered",
+  "D": 20,
+  "n_boot": 1000,
+  "seed_surrogate": 20261110,
+  "seed_boot": 20261111,
+  "variants": {
+   "leave_out": "primary: the pseudo-probe item(s) (and the real probe) are removed from the reference set",
+   "in_reference": "sensitivity: the pseudo-probe stays inside the reference set"
+  },
+  "refit_repeats": "inner-fold LR fits at the stored C on repeats 0-2 only (frozen folds)"
+ },
+ "celniak_unified": {
+  "reproduction_diag": {
+   "max_abs_score_diff": 0.0,
+   "max_abs_inner_oof_diff": 0.0,
+   "n_tau_mismatch": 0,
+   "n_stat_mismatch": 0,
+   "max_abs_person_stat_diff_vs_stored": 9.71445146547012e-17,
+   "max_abs_tau_diff_vs_stored": 9.71445146547012e-17
+  },
+  "a_real_nominal_all_repeats": {
+   "detection": 0.08333333333333333,
+   "detection_cp95": [
+    0.012348527170294813,
+    0.31698271401908235
+   ],
+   "n_pos_units": 20,
+   "fpr": 0.08771929824561403,
+   "fpr_cp95": [
+    0.01301216437177747,
+    0.33137666445676583
+   ],
+   "n_neg_units": 19
+  },
+  "a_real_nominal_stored_table_all_repeats": {
+   "detection": 0.08333333333333333,
+   "detection_cp95": [
+    0.012348527170294813,
+    0.31698271401908235
+   ],
+   "n_pos_units": 20,
+   "fpr": 0.08771929824561403,
+   "fpr_cp95": [
+    0.01301216437177747,
+    0.33137666445676583
+   ],
+   "n_neg_units": 19
+  },
+  "a_real_nominal_repeats_0_2": {
+   "detection": 0.08333333333333333,
+   "detection_cp95": [
+    0.012348527170294813,
+    0.31698271401908235
+   ],
+   "n_pos_units": 20,
+   "fpr": 0.08771929824561403,
+   "fpr_cp95": [
+    0.01301216437177747,
+    0.33137666445676583
+   ],
+   "n_neg_units": 19
+  },
+  "surrogate_construction": {
+   "rebuild_max_abs_diff": 2.220446049250313e-16,
+   "n_irrelevant_per_slide": 3,
+   "probe_set_size": 1
+  },
+  "surrogate": {
+   "all_repeats": {
+    "n_guilty_units": 20,
+    "n_innocent_units": 19,
+    "leave_out": {
+     "nominal": {
+      "surrogate_from_guilty": {
+       "fpr_mean_over_draws": 0.06666666666666667,
+       "fpr_sd_over_draws": 0.017934252894965676,
+       "fpr_min_draw": 0.03333333333333333,
+       "fpr_max_draw": 0.1,
+       "n_units": 20,
+       "cp95_approx": [
+        0.0012650894979498047,
+        0.24873276277202766
+       ]
+      },
+      "surrogate_from_innocent": {
+       "fpr_mean_over_draws": 0.09824561403508772,
+       "fpr_sd_over_draws": 0.020043528792192254,
+       "fpr_min_draw": 0.05263157894736842,
+       "fpr_max_draw": 0.12280701754385966,
+       "n_units": 19,
+       "cp95_approx": [
+        0.01301216437177747,
+        0.33137666445676583
+       ]
+      }
+     },
+     "surrogate_calibrated": {
+      "calibrated_on_training_guilty_surrogates": {
+       "real_innocent_fpr": 0.09473684210526315,
+       "real_innocent_fpr_sd_over_draws": 0.027534124409505097,
+       "real_innocent_fpr_min_draw": 0.03508771929824561,
+       "real_innocent_fpr_max_draw": 0.12280701754385966,
+       "real_innocent_fpr_cp95": [
+        0.01301216437177747,
+        0.33137666445676583
+       ],
+       "real_guilty_detection": 0.11416666666666667,
+       "real_guilty_detection_sd_over_draws": 0.027185199791785568,
+       "real_guilty_detection_cp95": [
+        0.012348527170294813,
+        0.31698271401908235
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.11333333333333333,
+       "mean_tau_surrogate_calibrated": 0.15956016335041187,
+       "mean_tau_nominal": 0.2285046348783512
+      },
+      "calibrated_on_training_innocent_surrogates": {
+       "real_innocent_fpr": 0.08245614035087719,
+       "real_innocent_fpr_sd_over_draws": 0.01619965819081822,
+       "real_innocent_fpr_min_draw": 0.05263157894736842,
+       "real_innocent_fpr_max_draw": 0.10526315789473684,
+       "real_innocent_fpr_cp95": [
+        0.01301216437177747,
+        0.33137666445676583
+       ],
+       "real_guilty_detection": 0.06666666666666667,
+       "real_guilty_detection_sd_over_draws": 0.017099639201419232,
+       "real_guilty_detection_cp95": [
+        0.0012650894979498047,
+        0.24873276277202766
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.05249999999999999,
+       "mean_tau_surrogate_calibrated": 0.24706200939143744,
+       "mean_tau_nominal": 0.2285046348783512
+      }
+     },
+     "real_innocent_fpr_nominal": 0.08771929824561403,
+     "real_innocent_fpr_nominal_cp95": [
+      0.01301216437177747,
+      0.33137666445676583
+     ],
+     "real_guilty_detection_nominal": 0.08333333333333333,
+     "differences_nominal": {
+      "surrogate_from_guilty_minus_real_innocent": {
+       "diff": -0.021052631578947364,
+       "boot95": [
+        -0.15229934210526316,
+        0.09172587719298238
+       ],
+       "design": "unpaired (different people)"
+      },
+      "surrogate_from_innocent_minus_real_innocent": {
+       "diff": 0.01052631578947369,
+       "boot95": [
+        -0.009649122807017518,
+        0.038618421052631566
+       ],
+       "design": "paired (same innocent people)"
+      },
+      "real_innocent_fpr_boot95": [
+       0.0,
+       0.21052631578947367
+      ],
+      "surrogate_from_guilty_fpr_boot95": [
+       0.011666666666666667,
+       0.14166666666666666
+      ],
+      "surrogate_from_innocent_fpr_boot95": [
+       0.003464912280701757,
+       0.21140350877192982
+      ]
+     },
+     "differences_surrogate_calibrated": {
+      "guilty_surrogate_calibrated_real_innocent_fpr_boot95": [
+       0.013157894736842105,
+       0.19388157894736838
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": 0.007017543859649117,
+       "boot95": [
+        -0.04478070175438599,
+        0.05526315789473682
+       ]
+      },
+      "minus_7pct_target": {
+       "diff": 0.02473684210526314,
+       "boot95": [
+        -0.0568421052631579,
+        0.12388157894736836
+       ]
+      },
+      "surrogate_guilty_fpr_at_same_threshold_boot95": [
+       0.03333333333333334,
+       0.2075416666666666
+      ]
+     },
+     "differences_surrogate_calibrated_innocent_surrogates": {
+      "real_innocent_fpr_boot95": [
+       0.0017543859649122807,
+       0.18245614035087715
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": -0.005263157894736845,
+       "boot95": [
+        -0.028092105263157925,
+        0.010526315789473661
+       ]
+      }
+     }
+    },
+    "in_reference": {
+     "nominal": {
+      "surrogate_from_guilty": {
+       "fpr_mean_over_draws": 0.056666666666666664,
+       "fpr_sd_over_draws": 0.015672078199387575,
+       "fpr_min_draw": 0.03333333333333333,
+       "fpr_max_draw": 0.1,
+       "n_units": 20,
+       "cp95_approx": [
+        0.0012650894979498047,
+        0.24873276277202766
+       ]
+      },
+      "surrogate_from_innocent": {
+       "fpr_mean_over_draws": 0.09298245614035087,
+       "fpr_sd_over_draws": 0.01619965819081822,
+       "fpr_min_draw": 0.05263157894736842,
+       "fpr_max_draw": 0.10526315789473684,
+       "n_units": 19,
+       "cp95_approx": [
+        0.01301216437177747,
+        0.33137666445676583
+       ]
+      }
+     },
+     "surrogate_calibrated": {
+      "calibrated_on_training_guilty_surrogates": {
+       "real_innocent_fpr": 0.07894736842105263,
+       "real_innocent_fpr_sd_over_draws": 0.020913668795763847,
+       "real_innocent_fpr_min_draw": 0.05263157894736842,
+       "real_innocent_fpr_max_draw": 0.10526315789473684,
+       "real_innocent_fpr_cp95": [
+        0.01301216437177747,
+        0.33137666445676583
+       ],
+       "real_guilty_detection": 0.11166666666666666,
+       "real_guilty_detection_sd_over_draws": 0.013355245153100527,
+       "real_guilty_detection_cp95": [
+        0.012348527170294813,
+        0.31698271401908235
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.10166666666666666,
+       "mean_tau_surrogate_calibrated": 0.1669884031768345,
+       "mean_tau_nominal": 0.2285046348783512
+      },
+      "calibrated_on_training_innocent_surrogates": {
+       "real_innocent_fpr": 0.09385964912280702,
+       "real_innocent_fpr_sd_over_draws": 0.008585271665431455,
+       "real_innocent_fpr_min_draw": 0.08771929824561403,
+       "real_innocent_fpr_max_draw": 0.10526315789473684,
+       "real_innocent_fpr_cp95": [
+        0.01301216437177747,
+        0.33137666445676583
+       ],
+       "real_guilty_detection": 0.07166666666666664,
+       "real_guilty_detection_sd_over_draws": 0.010949111422196435,
+       "real_guilty_detection_cp95": [
+        0.0012650894979498047,
+        0.24873276277202766
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.05333333333333333,
+       "mean_tau_surrogate_calibrated": 0.23157508883352418,
+       "mean_tau_nominal": 0.2285046348783512
+      }
+     },
+     "real_innocent_fpr_nominal": 0.08771929824561403,
+     "real_innocent_fpr_nominal_cp95": [
+      0.01301216437177747,
+      0.33137666445676583
+     ],
+     "real_guilty_detection_nominal": 0.08333333333333333,
+     "differences_nominal": {
+      "surrogate_from_guilty_minus_real_innocent": {
+       "diff": -0.031052631578947366,
+       "boot95": [
+        -0.15881798245614032,
+        0.07243092105263156
+       ],
+       "design": "unpaired (different people)"
+      },
+      "surrogate_from_innocent_minus_real_innocent": {
+       "diff": 0.005263157894736845,
+       "boot95": [
+        -0.01578947368421052,
+        0.031578947368421054
+       ],
+       "design": "paired (same innocent people)"
+      },
+      "real_innocent_fpr_boot95": [
+       0.0,
+       0.21052631578947367
+      ],
+      "surrogate_from_guilty_fpr_boot95": [
+       0.005,
+       0.11916666666666664
+      ],
+      "surrogate_from_innocent_fpr_boot95": [
+       0.0,
+       0.2035526315789473
+      ]
+     },
+     "differences_surrogate_calibrated": {
+      "guilty_surrogate_calibrated_real_innocent_fpr_boot95": [
+       0.005263157894736842,
+       0.18686403508771932
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": -0.008771929824561403,
+       "boot95": [
+        -0.05002192982456142,
+        0.019298245614035092
+       ]
+      },
+      "minus_7pct_target": {
+       "diff": 0.00894736842105262,
+       "boot95": [
+        -0.06473684210526316,
+        0.1168640350877193
+       ]
+      },
+      "surrogate_guilty_fpr_at_same_threshold_boot95": [
+       0.029166666666666667,
+       0.18418749999999998
+      ]
+     },
+     "differences_surrogate_calibrated_innocent_surrogates": {
+      "real_innocent_fpr_boot95": [
+       0.003464912280701757,
+       0.2087938596491228
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": 0.006140350877192988,
+       "boot95": [
+        -0.0035087719298245723,
+        0.020175438596491235
+       ]
+      }
+     }
+    }
+   },
+   "repeats_0_2": {
+    "n_guilty_units": 20,
+    "n_innocent_units": 19,
+    "leave_out": {
+     "nominal": {
+      "surrogate_from_guilty": {
+       "fpr_mean_over_draws": 0.06666666666666667,
+       "fpr_sd_over_draws": 0.017934252894965676,
+       "fpr_min_draw": 0.03333333333333333,
+       "fpr_max_draw": 0.1,
+       "n_units": 20,
+       "cp95_approx": [
+        0.0012650894979498047,
+        0.24873276277202766
+       ]
+      },
+      "surrogate_from_innocent": {
+       "fpr_mean_over_draws": 0.09824561403508772,
+       "fpr_sd_over_draws": 0.020043528792192254,
+       "fpr_min_draw": 0.05263157894736842,
+       "fpr_max_draw": 0.12280701754385966,
+       "n_units": 19,
+       "cp95_approx": [
+        0.01301216437177747,
+        0.33137666445676583
+       ]
+      }
+     },
+     "surrogate_calibrated": {
+      "calibrated_on_training_guilty_surrogates": {
+       "real_innocent_fpr": 0.09473684210526315,
+       "real_innocent_fpr_sd_over_draws": 0.027534124409505097,
+       "real_innocent_fpr_min_draw": 0.03508771929824561,
+       "real_innocent_fpr_max_draw": 0.12280701754385966,
+       "real_innocent_fpr_cp95": [
+        0.01301216437177747,
+        0.33137666445676583
+       ],
+       "real_guilty_detection": 0.11416666666666667,
+       "real_guilty_detection_sd_over_draws": 0.027185199791785568,
+       "real_guilty_detection_cp95": [
+        0.012348527170294813,
+        0.31698271401908235
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.11333333333333333,
+       "mean_tau_surrogate_calibrated": 0.15956016335041187,
+       "mean_tau_nominal": 0.2285046348783512
+      },
+      "calibrated_on_training_innocent_surrogates": {
+       "real_innocent_fpr": 0.08245614035087719,
+       "real_innocent_fpr_sd_over_draws": 0.01619965819081822,
+       "real_innocent_fpr_min_draw": 0.05263157894736842,
+       "real_innocent_fpr_max_draw": 0.10526315789473684,
+       "real_innocent_fpr_cp95": [
+        0.01301216437177747,
+        0.33137666445676583
+       ],
+       "real_guilty_detection": 0.06666666666666667,
+       "real_guilty_detection_sd_over_draws": 0.017099639201419232,
+       "real_guilty_detection_cp95": [
+        0.0012650894979498047,
+        0.24873276277202766
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.05249999999999999,
+       "mean_tau_surrogate_calibrated": 0.24706200939143744,
+       "mean_tau_nominal": 0.2285046348783512
+      }
+     },
+     "real_innocent_fpr_nominal": 0.08771929824561403,
+     "real_innocent_fpr_nominal_cp95": [
+      0.01301216437177747,
+      0.33137666445676583
+     ],
+     "real_guilty_detection_nominal": 0.08333333333333333,
+     "differences_nominal": {
+      "surrogate_from_guilty_minus_real_innocent": {
+       "diff": -0.021052631578947364,
+       "boot95": [
+        -0.15229934210526316,
+        0.09172587719298238
+       ],
+       "design": "unpaired (different people)"
+      },
+      "surrogate_from_innocent_minus_real_innocent": {
+       "diff": 0.01052631578947369,
+       "boot95": [
+        -0.009649122807017518,
+        0.038618421052631566
+       ],
+       "design": "paired (same innocent people)"
+      },
+      "real_innocent_fpr_boot95": [
+       0.0,
+       0.21052631578947367
+      ],
+      "surrogate_from_guilty_fpr_boot95": [
+       0.011666666666666667,
+       0.14166666666666666
+      ],
+      "surrogate_from_innocent_fpr_boot95": [
+       0.003464912280701757,
+       0.21140350877192982
+      ]
+     },
+     "differences_surrogate_calibrated": {
+      "guilty_surrogate_calibrated_real_innocent_fpr_boot95": [
+       0.013157894736842105,
+       0.19388157894736838
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": 0.007017543859649117,
+       "boot95": [
+        -0.04478070175438599,
+        0.05526315789473682
+       ]
+      },
+      "minus_7pct_target": {
+       "diff": 0.02473684210526314,
+       "boot95": [
+        -0.0568421052631579,
+        0.12388157894736836
+       ]
+      },
+      "surrogate_guilty_fpr_at_same_threshold_boot95": [
+       0.03333333333333334,
+       0.2075416666666666
+      ]
+     },
+     "differences_surrogate_calibrated_innocent_surrogates": {
+      "real_innocent_fpr_boot95": [
+       0.0017543859649122807,
+       0.18245614035087715
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": -0.005263157894736845,
+       "boot95": [
+        -0.028092105263157925,
+        0.010526315789473661
+       ]
+      }
+     }
+    },
+    "in_reference": {
+     "nominal": {
+      "surrogate_from_guilty": {
+       "fpr_mean_over_draws": 0.056666666666666664,
+       "fpr_sd_over_draws": 0.015672078199387575,
+       "fpr_min_draw": 0.03333333333333333,
+       "fpr_max_draw": 0.1,
+       "n_units": 20,
+       "cp95_approx": [
+        0.0012650894979498047,
+        0.24873276277202766
+       ]
+      },
+      "surrogate_from_innocent": {
+       "fpr_mean_over_draws": 0.09298245614035087,
+       "fpr_sd_over_draws": 0.01619965819081822,
+       "fpr_min_draw": 0.05263157894736842,
+       "fpr_max_draw": 0.10526315789473684,
+       "n_units": 19,
+       "cp95_approx": [
+        0.01301216437177747,
+        0.33137666445676583
+       ]
+      }
+     },
+     "surrogate_calibrated": {
+      "calibrated_on_training_guilty_surrogates": {
+       "real_innocent_fpr": 0.07894736842105263,
+       "real_innocent_fpr_sd_over_draws": 0.020913668795763847,
+       "real_innocent_fpr_min_draw": 0.05263157894736842,
+       "real_innocent_fpr_max_draw": 0.10526315789473684,
+       "real_innocent_fpr_cp95": [
+        0.01301216437177747,
+        0.33137666445676583
+       ],
+       "real_guilty_detection": 0.11166666666666666,
+       "real_guilty_detection_sd_over_draws": 0.013355245153100527,
+       "real_guilty_detection_cp95": [
+        0.012348527170294813,
+        0.31698271401908235
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.10166666666666666,
+       "mean_tau_surrogate_calibrated": 0.1669884031768345,
+       "mean_tau_nominal": 0.2285046348783512
+      },
+      "calibrated_on_training_innocent_surrogates": {
+       "real_innocent_fpr": 0.09385964912280702,
+       "real_innocent_fpr_sd_over_draws": 0.008585271665431455,
+       "real_innocent_fpr_min_draw": 0.08771929824561403,
+       "real_innocent_fpr_max_draw": 0.10526315789473684,
+       "real_innocent_fpr_cp95": [
+        0.01301216437177747,
+        0.33137666445676583
+       ],
+       "real_guilty_detection": 0.07166666666666664,
+       "real_guilty_detection_sd_over_draws": 0.010949111422196435,
+       "real_guilty_detection_cp95": [
+        0.0012650894979498047,
+        0.24873276277202766
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.05333333333333333,
+       "mean_tau_surrogate_calibrated": 0.23157508883352418,
+       "mean_tau_nominal": 0.2285046348783512
+      }
+     },
+     "real_innocent_fpr_nominal": 0.08771929824561403,
+     "real_innocent_fpr_nominal_cp95": [
+      0.01301216437177747,
+      0.33137666445676583
+     ],
+     "real_guilty_detection_nominal": 0.08333333333333333,
+     "differences_nominal": {
+      "surrogate_from_guilty_minus_real_innocent": {
+       "diff": -0.031052631578947366,
+       "boot95": [
+        -0.15881798245614032,
+        0.07243092105263156
+       ],
+       "design": "unpaired (different people)"
+      },
+      "surrogate_from_innocent_minus_real_innocent": {
+       "diff": 0.005263157894736845,
+       "boot95": [
+        -0.01578947368421052,
+        0.031578947368421054
+       ],
+       "design": "paired (same innocent people)"
+      },
+      "real_innocent_fpr_boot95": [
+       0.0,
+       0.21052631578947367
+      ],
+      "surrogate_from_guilty_fpr_boot95": [
+       0.005,
+       0.11916666666666664
+      ],
+      "surrogate_from_innocent_fpr_boot95": [
+       0.0,
+       0.2035526315789473
+      ]
+     },
+     "differences_surrogate_calibrated": {
+      "guilty_surrogate_calibrated_real_innocent_fpr_boot95": [
+       0.005263157894736842,
+       0.18686403508771932
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": -0.008771929824561403,
+       "boot95": [
+        -0.05002192982456142,
+        0.019298245614035092
+       ]
+      },
+      "minus_7pct_target": {
+       "diff": 0.00894736842105262,
+       "boot95": [
+        -0.06473684210526316,
+        0.1168640350877193
+       ]
+      },
+      "surrogate_guilty_fpr_at_same_threshold_boot95": [
+       0.029166666666666667,
+       0.18418749999999998
+      ]
+     },
+     "differences_surrogate_calibrated_innocent_surrogates": {
+      "real_innocent_fpr_boot95": [
+       0.003464912280701757,
+       0.2087938596491228
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": 0.006140350877192988,
+       "boot95": [
+        -0.0035087719298245723,
+        0.020175438596491235
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "mazza_guilty_vs_innocent": {
+  "reproduction_diag": {
+   "max_abs_score_diff": 0.0,
+   "max_abs_inner_oof_diff": 0.0,
+   "n_tau_mismatch": 0,
+   "n_stat_mismatch": 0,
+   "max_abs_person_stat_diff_vs_stored": 2.220446049250313e-16,
+   "max_abs_tau_diff_vs_stored": 8.326672684688674e-17
+  },
+  "a_real_nominal_all_repeats": {
+   "detection": 0.28461538461538466,
+   "detection_cp95": [
+    0.1859379930952215,
+    0.3953311813587356
+   ],
+   "n_pos_units": 78,
+   "fpr": 0.09113924050632913,
+   "fpr_cp95": [
+    0.0363705459132394,
+    0.17408068598832285
+   ],
+   "n_neg_units": 79
+  },
+  "a_real_nominal_stored_table_all_repeats": {
+   "detection": 0.28461538461538466,
+   "detection_cp95": [
+    0.1859379930952215,
+    0.3953311813587356
+   ],
+   "n_pos_units": 78,
+   "fpr": 0.09113924050632913,
+   "fpr_cp95": [
+    0.0363705459132394,
+    0.17408068598832285
+   ],
+   "n_neg_units": 79
+  },
+  "a_real_nominal_repeats_0_2": {
+   "detection": 0.28205128205128205,
+   "detection_cp95": [
+    0.1859379930952215,
+    0.3953311813587356
+   ],
+   "n_pos_units": 78,
+   "fpr": 0.08016877637130801,
+   "fpr_cp95": [
+    0.028381815625426694,
+    0.15801412230470732
+   ],
+   "n_neg_units": 79
+  },
+  "surrogate_construction": {
+   "rebuild_max_abs_diff": 0.0,
+   "n_irrelevant_images": 3,
+   "probe_set_size": 6,
+   "note": "6 target slots, only 3 neutral images: each slot is filled by one neutral image drawn with replacement"
+  },
+  "surrogate": {
+   "all_repeats": {
+    "n_guilty_units": 78,
+    "n_innocent_units": 79,
+    "leave_out": {
+     "nominal": {
+      "surrogate_from_guilty": {
+       "fpr_mean_over_draws": 0.8034615384615383,
+       "fpr_sd_over_draws": 0.027881532241483358,
+       "fpr_min_draw": 0.7615384615384615,
+       "fpr_max_draw": 0.8512820512820511,
+       "n_units": 78,
+       "cp95_approx": [
+        0.7027294300523437,
+        0.8881803153208991
+       ]
+      },
+      "surrogate_from_innocent": {
+       "fpr_mean_over_draws": 0.8298734177215188,
+       "fpr_sd_over_draws": 0.032562077963635014,
+       "fpr_min_draw": 0.7645569620253164,
+       "fpr_max_draw": 0.9113924050632911,
+       "n_units": 79,
+       "cp95_approx": [
+        0.7350548769543931,
+        0.9093655580547604
+       ]
+      }
+     },
+     "surrogate_calibrated": {
+      "calibrated_on_training_guilty_surrogates": null,
+      "calibrated_on_training_innocent_surrogates": null
+     },
+     "real_innocent_fpr_nominal": 0.09113924050632913,
+     "real_innocent_fpr_nominal_cp95": [
+      0.0363705459132394,
+      0.17408068598832285
+     ],
+     "real_guilty_detection_nominal": 0.28461538461538466,
+     "differences_nominal": {
+      "surrogate_from_guilty_minus_real_innocent": {
+       "diff": 0.7123222979552092,
+       "boot95": [
+        0.647939629990263,
+        0.7710702288218111
+       ],
+       "design": "unpaired (different people)"
+      },
+      "surrogate_from_innocent_minus_real_innocent": {
+       "diff": 0.7387341772151896,
+       "boot95": [
+        0.6787278481012657,
+        0.7920253164556962
+       ],
+       "design": "paired (same innocent people)"
+      },
+      "real_innocent_fpr_boot95": [
+       0.043037974683544304,
+       0.14689873417721513
+      ],
+      "surrogate_from_guilty_fpr_boot95": [
+       0.7708910256410257,
+       0.8333397435897434
+      ],
+      "surrogate_from_innocent_fpr_boot95": [
+       0.8027816455696203,
+       0.8545601265822784
+      ]
+     }
+    },
+    "in_reference": {
+     "nominal": {
+      "surrogate_from_guilty": {
+       "fpr_mean_over_draws": 0.9235897435897437,
+       "fpr_sd_over_draws": 0.016272192494864276,
+       "fpr_min_draw": 0.882051282051282,
+       "fpr_max_draw": 0.9461538461538463,
+       "n_units": 78,
+       "cp95_approx": [
+        0.8400536354993884,
+        0.9712474749984645
+       ]
+      },
+      "surrogate_from_innocent": {
+       "fpr_mean_over_draws": 0.9332911392405063,
+       "fpr_sd_over_draws": 0.013352701562493883,
+       "fpr_min_draw": 0.9088607594936708,
+       "fpr_max_draw": 0.959493670886076,
+       "n_units": 79,
+       "cp95_approx": [
+        0.8584484173827083,
+        0.9791320538534382
+       ]
+      }
+     },
+     "surrogate_calibrated": {
+      "calibrated_on_training_guilty_surrogates": null,
+      "calibrated_on_training_innocent_surrogates": null
+     },
+     "real_innocent_fpr_nominal": 0.09113924050632913,
+     "real_innocent_fpr_nominal_cp95": [
+      0.0363705459132394,
+      0.17408068598832285
+     ],
+     "real_guilty_detection_nominal": 0.28461538461538466,
+     "differences_nominal": {
+      "surrogate_from_guilty_minus_real_innocent": {
+       "diff": 0.8324505030834145,
+       "boot95": [
+        0.7723151168451802,
+        0.8830565563128856
+       ],
+       "design": "unpaired (different people)"
+      },
+      "surrogate_from_innocent_minus_real_innocent": {
+       "diff": 0.8421518987341772,
+       "boot95": [
+        0.7838797468354431,
+        0.8906360759493671
+       ],
+       "design": "paired (same innocent people)"
+      },
+      "real_innocent_fpr_boot95": [
+       0.043037974683544304,
+       0.14689873417721513
+      ],
+      "surrogate_from_guilty_fpr_boot95": [
+       0.9066634615384614,
+       0.9385897435897436
+      ],
+      "surrogate_from_innocent_fpr_boot95": [
+       0.9201265822784813,
+       0.9458227848101264
+      ]
+     }
+    }
+   },
+   "repeats_0_2": {
+    "n_guilty_units": 78,
+    "n_innocent_units": 79,
+    "leave_out": {
+     "nominal": {
+      "surrogate_from_guilty": {
+       "fpr_mean_over_draws": 0.8141025641025641,
+       "fpr_sd_over_draws": 0.028633989257925964,
+       "fpr_min_draw": 0.7692307692307693,
+       "fpr_max_draw": 0.8675213675213675,
+       "n_units": 78,
+       "cp95_approx": [
+        0.7172268000608573,
+        0.8982506628263487
+       ]
+      },
+      "surrogate_from_innocent": {
+       "fpr_mean_over_draws": 0.8434599156118144,
+       "fpr_sd_over_draws": 0.03503300140952098,
+       "fpr_min_draw": 0.7679324894514767,
+       "fpr_max_draw": 0.9409282700421943,
+       "n_units": 79,
+       "cp95_approx": [
+        0.7496925685141187,
+        0.9189721833562001
+       ]
+      }
+     },
+     "surrogate_calibrated": {
+      "calibrated_on_training_guilty_surrogates": {
+       "real_innocent_fpr": 0.0010548523206751054,
+       "real_innocent_fpr_sd_over_draws": 0.0023211797646421136,
+       "real_innocent_fpr_min_draw": 0.0,
+       "real_innocent_fpr_max_draw": 0.008438818565400843,
+       "real_innocent_fpr_cp95": [
+        0.0,
+        0.04562125275861111
+       ],
+       "real_guilty_detection": 0.018376068376068373,
+       "real_guilty_detection_sd_over_draws": 0.00821440096816907,
+       "real_guilty_detection_cp95": [
+        0.0003245346090972238,
+        0.069372740785605
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.13440170940170942,
+       "mean_tau_surrogate_calibrated": 0.5940767003338518,
+       "mean_tau_nominal": 0.2814940529158054
+      },
+      "calibrated_on_training_innocent_surrogates": {
+       "real_innocent_fpr": 0.0035864978902953584,
+       "real_innocent_fpr_sd_over_draws": 0.0031441342631670656,
+       "real_innocent_fpr_min_draw": 0.0,
+       "real_innocent_fpr_max_draw": 0.008438818565400843,
+       "real_innocent_fpr_cp95": [
+        0.0,
+        0.04562125275861111
+       ],
+       "real_guilty_detection": 0.023717948717948713,
+       "real_guilty_detection_sd_over_draws": 0.009142019331070235,
+       "real_guilty_detection_cp95": [
+        0.003120472482934025,
+        0.08957332714632768
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.163034188034188,
+       "mean_tau_surrogate_calibrated": 0.5718780933114962,
+       "mean_tau_nominal": 0.2814940529158054
+      }
+     },
+     "real_innocent_fpr_nominal": 0.08016877637130801,
+     "real_innocent_fpr_nominal_cp95": [
+      0.028381815625426694,
+      0.15801412230470732
+     ],
+     "real_guilty_detection_nominal": 0.28205128205128205,
+     "differences_nominal": {
+      "surrogate_from_guilty_minus_real_innocent": {
+       "diff": 0.7339337877312561,
+       "boot95": [
+        0.6716394163150494,
+        0.7924267689061991
+       ],
+       "design": "unpaired (different people)"
+      },
+      "surrogate_from_innocent_minus_real_innocent": {
+       "diff": 0.7632911392405064,
+       "boot95": [
+        0.703581223628692,
+        0.8151951476793248
+       ],
+       "design": "paired (same innocent people)"
+      },
+      "real_innocent_fpr_boot95": [
+       0.033649789029535866,
+       0.1350210970464135
+      ],
+      "surrogate_from_guilty_fpr_boot95": [
+       0.7820459401709402,
+       0.8448771367521368
+      ],
+      "surrogate_from_innocent_fpr_boot95": [
+       0.813074894514768,
+       0.8698364978902954
+      ]
+     },
+     "differences_surrogate_calibrated": {
+      "guilty_surrogate_calibrated_real_innocent_fpr_boot95": [
+       0.0,
+       0.0031645569620253164
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": -0.0791139240506329,
+       "boot95": [
+        -0.13335443037974687,
+        -0.03241561181434605
+       ]
+      },
+      "minus_7pct_target": {
+       "diff": -0.0689451476793249,
+       "boot95": [
+        -0.07,
+        -0.06683544303797469
+       ]
+      },
+      "surrogate_guilty_fpr_at_same_threshold_boot95": [
+       0.10832799145299145,
+       0.16260683760683758
+      ]
+     },
+     "differences_surrogate_calibrated_innocent_surrogates": {
+      "real_innocent_fpr_boot95": [
+       0.0,
+       0.010126582278481013
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": -0.07658227848101265,
+       "boot95": [
+        -0.1293301687763713,
+        -0.031181434599156153
+       ]
+      }
+     }
+    },
+    "in_reference": {
+     "nominal": {
+      "surrogate_from_guilty": {
+       "fpr_mean_over_draws": 0.9435897435897439,
+       "fpr_sd_over_draws": 0.013975559190797049,
+       "fpr_min_draw": 0.9102564102564102,
+       "fpr_max_draw": 0.9615384615384616,
+       "n_units": 78,
+       "cp95_approx": [
+        0.873872369821711,
+        0.9858525691055138
+       ]
+      },
+      "surrogate_from_innocent": {
+       "fpr_mean_over_draws": 0.9567510548523206,
+       "fpr_sd_over_draws": 0.012002795747453773,
+       "fpr_min_draw": 0.9282700421940928,
+       "fpr_max_draw": 0.978902953586498,
+       "n_units": 79,
+       "cp95_approx": [
+        0.8930090802260363,
+        0.9920991811253633
+       ]
+      }
+     },
+     "surrogate_calibrated": {
+      "calibrated_on_training_guilty_surrogates": {
+       "real_innocent_fpr": 0.012447257383966244,
+       "real_innocent_fpr_sd_over_draws": 0.004213853771031456,
+       "real_innocent_fpr_min_draw": 0.004219409282700422,
+       "real_innocent_fpr_max_draw": 0.02109704641350211,
+       "real_innocent_fpr_cp95": [
+        0.000320427234304267,
+        0.06851990948677213
+       ],
+       "real_guilty_detection": 0.0485042735042735,
+       "real_guilty_detection_sd_over_draws": 0.005927219802919706,
+       "real_guilty_detection_cp95": [
+        0.0141474308944862,
+        0.12612763017828904
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.1762820512820513,
+       "mean_tau_surrogate_calibrated": 0.5059422736233251,
+       "mean_tau_nominal": 0.2814940529158054
+      },
+      "calibrated_on_training_innocent_surrogates": {
+       "real_innocent_fpr": 0.015822784810126576,
+       "real_innocent_fpr_sd_over_draws": 0.004514446224795941,
+       "real_innocent_fpr_min_draw": 0.004219409282700422,
+       "real_innocent_fpr_max_draw": 0.02109704641350211,
+       "real_innocent_fpr_cp95": [
+        0.000320427234304267,
+        0.06851990948677213
+       ],
+       "real_guilty_detection": 0.052991452991452984,
+       "real_guilty_detection_sd_over_draws": 0.0056149289344597135,
+       "real_guilty_detection_cp95": [
+        0.0141474308944862,
+        0.12612763017828904
+       ],
+       "surrogate_guilty_fpr_at_same_threshold": 0.20363247863247858,
+       "mean_tau_surrogate_calibrated": 0.4971601808017831,
+       "mean_tau_nominal": 0.2814940529158054
+      }
+     },
+     "real_innocent_fpr_nominal": 0.08016877637130801,
+     "real_innocent_fpr_nominal_cp95": [
+      0.028381815625426694,
+      0.15801412230470732
+     ],
+     "real_guilty_detection_nominal": 0.28205128205128205,
+     "differences_nominal": {
+      "surrogate_from_guilty_minus_real_innocent": {
+       "diff": 0.8634209672184359,
+       "boot95": [
+        0.8041695742724224,
+        0.912262996321541
+       ],
+       "design": "unpaired (different people)"
+      },
+      "surrogate_from_innocent_minus_real_innocent": {
+       "diff": 0.8765822784810126,
+       "boot95": [
+        0.8193565400843885,
+        0.9225949367088607
+       ],
+       "design": "paired (same innocent people)"
+      },
+      "real_innocent_fpr_boot95": [
+       0.033649789029535866,
+       0.1350210970464135
+      ],
+      "surrogate_from_guilty_fpr_boot95": [
+       0.9279914529914529,
+       0.9566346153846156
+      ],
+      "surrogate_from_innocent_fpr_boot95": [
+       0.9432489451476797,
+       0.9683597046413502
+      ]
+     },
+     "differences_surrogate_calibrated": {
+      "guilty_surrogate_calibrated_real_innocent_fpr_boot95": [
+       0.0,
+       0.029541139240506328
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": -0.06772151898734177,
+       "boot95": [
+        -0.11604957805907175,
+        -0.028059071729957804
+       ]
+      },
+      "minus_7pct_target": {
+       "diff": -0.05755274261603376,
+       "boot95": [
+        -0.07,
+        -0.04045886075949368
+       ]
+      },
+      "surrogate_guilty_fpr_at_same_threshold_boot95": [
+       0.1517040598290598,
+       0.2014957264957265
+      ]
+     },
+     "differences_surrogate_calibrated_innocent_surrogates": {
+      "real_innocent_fpr_boot95": [
+       0.0,
+       0.037347046413502095
+      ],
+      "minus_real_innocent_fpr_at_nominal_threshold": {
+       "diff": -0.06434599156118143,
+       "boot95": [
+        -0.11121308016877637,
+        -0.02721518987341772
+       ]
+      }
+     }
+    }
+   }
+  }
+ }
+}

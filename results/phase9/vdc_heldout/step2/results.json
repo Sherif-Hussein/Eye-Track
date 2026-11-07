@@ -1,0 +1,144 @@
+{
+ "n": {
+  "guilty": 42,
+  "informed": 45,
+  "naive": 46
+ },
+ "H1": {
+  "contrast": "guilty (known, handled) vs naive",
+  "auc": 0.6868530020703933,
+  "ci95_boot": [
+   0.5734730848861284,
+   0.7898809523809522
+  ],
+  "p_one_sided": 0.002997002997002997,
+  "n_perm": 1000,
+  "perm_auc_mean": 0.49887318840579714,
+  "perm_auc_sd": 0.06580155021584584,
+  "supported": true
+ },
+ "H2": {
+  "contrast": "guilty (known, handled) vs informed",
+  "auc": 0.6544973544973545,
+  "ci95_boot": [
+   0.5306746031746031,
+   0.7693121693121693
+  ],
+  "p_one_sided": 0.00999000999000999,
+  "n_perm": 1000,
+  "perm_auc_mean": 0.49881058201058204,
+  "perm_auc_sd": 0.06425033210114232,
+  "p_holm": 0.02997002997002997
+ },
+ "H5": {
+  "contrast": "informed (known, saw pictures) vs naive",
+  "auc": 0.5729468599033817,
+  "ci95_boot": [
+   0.45603864734299515,
+   0.6903864734299514
+  ],
+  "p_one_sided": 0.11688311688311688,
+  "n_perm": 1000,
+  "note": "item model trained on guilty participants only, unaffected by this permutation",
+  "p_holm": 0.23376623376623376
+ },
+ "H3": {
+  "contrast": "our pipeline minus authors' equal-weight index, guilty vs naive",
+  "auc_ours": 0.6868530020703933,
+  "auc_authors": 0.7122153209109731,
+  "diff": -0.025362318840579712,
+  "ci95_boot": [
+   -0.10434424353643727,
+   0.052330735096321836
+  ],
+  "p_two_sided": 0.5102448775612194,
+  "n_swaps": 2000,
+  "authors_ci95_delong": [
+   0.6027978120449891,
+   0.8216328297769571
+  ],
+  "p_holm": 0.5102448775612194
+ },
+ "estimation": {
+  "guilty": {
+   "flagged": 7,
+   "n": 42,
+   "rate": 0.16666666666666666,
+   "ci95_clopper_pearson": [
+    0.0697406636556751,
+    0.3136408668806712
+   ]
+  },
+  "informed": {
+   "flagged": 1,
+   "n": 45,
+   "rate": 0.022222222222222223,
+   "ci95_clopper_pearson": [
+    0.0005624597154022577,
+    0.11770433141829421
+   ]
+  },
+  "naive": {
+   "flagged": 3,
+   "n": 46,
+   "rate": 0.06521739130434782,
+   "ci95_clopper_pearson": [
+    0.013656771913445585,
+    0.17896438887275123
+   ]
+  },
+  "informed_minus_naive_fpr": {
+   "diff": -0.0429951690821256,
+   "ci95_boot": [
+    -0.13043478260869565,
+    0.044444444444444446
+   ]
+  },
+  "per_repeat_rates": {
+   "0": {
+    "guilty": 0.21428571428571427,
+    "informed": 0.044444444444444446,
+    "naive": 0.08695652173913043
+   },
+   "1": {
+    "guilty": 0.2619047619047619,
+    "informed": 0.022222222222222223,
+    "naive": 0.08695652173913043
+   },
+   "2": {
+    "guilty": 0.19047619047619047,
+    "informed": 0.022222222222222223,
+    "naive": 0.08695652173913043
+   }
+  },
+  "HTER_at_7pct_threshold_guilty_vs_naive": 0.4492753623188406,
+  "EER_guilty_vs_naive": 0.32971014492753625,
+  "EER_guilty_vs_informed": 0.42539682539682544,
+  "EER_informed_vs_naive": 0.3956521739130435,
+  "HTER_note": "HTER = (FPR among naive + miss rate among guilty)/2 at the 7% threshold"
+ },
+ "exploratory_frozen_delmas_30hz": {
+  "guilty_vs_naive": {
+   "auc": 0.6811594202898551,
+   "ci95_boot": [
+    0.5512163561076604,
+    0.7898680124223602
+   ]
+  },
+  "guilty_vs_informed": {
+   "auc": 0.6391534391534391,
+   "ci95_boot": [
+    0.5168915343915343,
+    0.7571428571428571
+   ]
+  },
+  "informed_vs_naive": {
+   "auc": 0.5661835748792271,
+   "ci95_boot": [
+    0.4492632850241546,
+    0.6845652173913043
+   ]
+  },
+  "note": "exploratory (D4), not in any family; frozen model applied unchanged (10 pupil-free features, stored sign: less dwell on the known item gives a higher score); no p-values; 11 of our features map to its 10 inputs by name; our dwell_1 window is the authors' 1-1000 ms"
+ }
+}

@@ -1,0 +1,356 @@
+{
+  "seed": 20261105,
+  "n_perm": 2000,
+  "margin_delmas": 0.02,
+  "comparisons": {
+    "1 Delmas image AUC (mean of 6 sets)": {
+      "statistic": "image-level AUC, mean over 6 sets, repeat-averaged",
+      "observed_delta": 0.00023491345370252326,
+      "mean_baseline": 0.7810845165216441,
+      "mean_fixed": 0.7813194299753466,
+      "raw": {
+        "p_two_sided": 0.9880059970014993,
+        "perm_sd": 0.010509993975895476,
+        "perm_mean": -5.929787547308568e-05,
+        "n_perm": 2000,
+        "p_noninferiority_one_sided": 0.027486256871564217
+      },
+      "note": "75 participant ids swapped (a participant in two sets is swapped in both)",
+      "rank": {
+        "observed_delta": -0.0009338414090109826,
+        "mean_baseline": 0.7803470749691371,
+        "mean_fixed": 0.7794132335601262,
+        "p_two_sided": 0.935032483758121,
+        "perm_sd": 0.010499251103132812,
+        "perm_mean": -5.2992768687664726e-05,
+        "n_perm": 2000,
+        "p_noninferiority_one_sided": 0.035982008995502246
+      },
+      "holm_raw": {
+        "p_used": 0.027486256871564217,
+        "p_holm": 0.1854072963518241,
+        "p_holm_if_delmas_two_sided": 0.9880059970014993
+      },
+      "holm_rank": {
+        "p_used": 0.035982008995502246,
+        "p_holm": 0.21589205397301348,
+        "p_holm_if_delmas_two_sided": 1.0
+      }
+    },
+    "2 Chen detection at FPR<=7% (calibrated)": {
+      "statistic": "participant detection rate (stored decisions at the training-set 7% threshold, mean over 3 repeats), swap of the stored decisions",
+      "observed_delta": 0.14880952380952367,
+      "mean_baseline": 0.42857142857142866,
+      "mean_fixed": 0.5773809523809523,
+      "raw": {
+        "p_two_sided": 0.05897051474262868,
+        "perm_sd": 0.07276008552325564,
+        "perm_mean": 0.00021428571428571552,
+        "n_perm": 2000
+      },
+      "note": "thresholds were set on training participants before swapping and are not recomputed; the stored per-participant decisions are exchanged",
+      "holm_raw": {
+        "p_used": 0.05897051474262868,
+        "p_holm": 0.29485257371314344,
+        "p_holm_if_delmas_two_sided": 0.3538230884557721
+      },
+      "holm_rank": {
+        "p_used": 0.05897051474262868,
+        "p_holm": 0.2748625687156422,
+        "p_holm_if_delmas_two_sided": 0.3298350824587706
+      }
+    },
+    "2b Chen participant AUC (secondary)": {
+      "statistic": "participant AUC, familiar vs control z statistics",
+      "observed_delta": 0.08450255102040816,
+      "mean_baseline": 0.7700892857142857,
+      "mean_fixed": 0.8545918367346939,
+      "raw": {
+        "p_two_sided": 0.031484257871064465,
+        "perm_sd": 0.03930530855956798,
+        "perm_mean": 0.00012914540816326563,
+        "n_perm": 2000
+      },
+      "note": "secondary; not part of the Holm family",
+      "rank": {
+        "observed_delta": 0.08474170918367341,
+        "mean_baseline": 0.7704081632653061,
+        "mean_fixed": 0.8551498724489796,
+        "p_two_sided": 0.030984507746126936,
+        "perm_sd": 0.03929444455959424,
+        "perm_mean": -1.88536352040814e-05,
+        "n_perm": 2000
+      }
+    },
+    "3 Celniak participant AUC": {
+      "statistic": "participant AUC (mean of rows, mean over repeats)",
+      "observed_delta": -0.1473684210526316,
+      "mean_baseline": 0.6078947368421053,
+      "mean_fixed": 0.4605263157894737,
+      "raw": {
+        "p_two_sided": 0.11244377811094453,
+        "perm_sd": 0.09127874069258309,
+        "perm_mean": 0.001517105263157894,
+        "n_perm": 2000
+      },
+      "note": "39 participants",
+      "rank": {
+        "observed_delta": -0.15394736842105267,
+        "mean_baseline": 0.6039473684210527,
+        "mean_fixed": 0.45,
+        "p_two_sided": 0.054972513743128434,
+        "perm_sd": 0.07925104537178533,
+        "perm_mean": 0.005149999999999998,
+        "n_perm": 2000
+      },
+      "holm_raw": {
+        "p_used": 0.11244377811094453,
+        "p_holm": 0.4497751124437781,
+        "p_holm_if_delmas_two_sided": 0.5622188905547226
+      },
+      "holm_rank": {
+        "p_used": 0.054972513743128434,
+        "p_holm": 0.2748625687156422,
+        "p_holm_if_delmas_two_sided": 0.3298350824587706
+      }
+    },
+    "4 Preti eyes only participant AUC": {
+      "statistic": "participant AUC (mean of rows, mean over repeats)",
+      "observed_delta": 0.18888888888888883,
+      "mean_baseline": 0.3802469135802469,
+      "mean_fixed": 0.5691358024691358,
+      "raw": {
+        "p_two_sided": 0.026486756621689155,
+        "perm_sd": 0.08419678861544234,
+        "perm_mean": -0.0027438271604938256,
+        "n_perm": 2000
+      },
+      "note": "57 participants",
+      "rank": {
+        "observed_delta": 0.18395061728395057,
+        "mean_baseline": 0.38395061728395063,
+        "mean_fixed": 0.5679012345679012,
+        "p_two_sided": 0.0069965017491254375,
+        "perm_sd": 0.0680710725283623,
+        "perm_mean": -0.0018978395061728405,
+        "n_perm": 2000
+      },
+      "holm_raw": {
+        "p_used": 0.026486756621689155,
+        "p_holm": 0.1854072963518241,
+        "p_holm_if_delmas_two_sided": 0.1854072963518241
+      },
+      "holm_rank": {
+        "p_used": 0.0069965017491254375,
+        "p_holm": 0.04897551224387806,
+        "p_holm_if_delmas_two_sided": 0.04897551224387806
+      }
+    },
+    "5 Preti with RT participant AUC": {
+      "statistic": "participant AUC (mean of rows, mean over repeats)",
+      "observed_delta": 0.03580246913580254,
+      "mean_baseline": 0.928395061728395,
+      "mean_fixed": 0.9641975308641976,
+      "raw": {
+        "p_two_sided": 0.22588705647176413,
+        "perm_sd": 0.026818698875193954,
+        "perm_mean": 0.0007629629629629628,
+        "n_perm": 2000
+      },
+      "note": "57 participants",
+      "rank": {
+        "observed_delta": 0.03827160493827153,
+        "mean_baseline": 0.9265432098765433,
+        "mean_fixed": 0.9648148148148148,
+        "p_two_sided": 0.09145427286356822,
+        "perm_sd": 0.022838585181213854,
+        "perm_mean": 0.0005324074074074078,
+        "n_perm": 2000
+      },
+      "holm_raw": {
+        "p_used": 0.22588705647176413,
+        "p_holm": 0.6776611694152924,
+        "p_holm_if_delmas_two_sided": 0.9035482258870565
+      },
+      "holm_rank": {
+        "p_used": 0.09145427286356822,
+        "p_holm": 0.2748625687156422,
+        "p_holm_if_delmas_two_sided": 0.3658170914542729
+      }
+    },
+    "6 Colasanti group 2 vs 3 participant AUC": {
+      "statistic": "participant AUC (mean of rows, mean over repeats)",
+      "observed_delta": -0.08947368421052637,
+      "mean_baseline": 0.6901315789473684,
+      "mean_fixed": 0.6006578947368421,
+      "raw": {
+        "p_two_sided": 0.2588705647176412,
+        "perm_sd": 0.07932079719549301,
+        "perm_mean": 0.0006578947368421055,
+        "n_perm": 2000
+      },
+      "note": "78 participants",
+      "rank": {
+        "observed_delta": 0.008552631578947367,
+        "mean_baseline": 0.6891447368421053,
+        "mean_fixed": 0.6976973684210527,
+        "p_two_sided": 0.9015492253873063,
+        "perm_sd": 0.06848536305771213,
+        "perm_mean": 0.00019046052631578768,
+        "n_perm": 2000
+      },
+      "holm_raw": {
+        "p_used": 0.2588705647176412,
+        "p_holm": 0.6776611694152924,
+        "p_holm_if_delmas_two_sided": 0.9035482258870565
+      },
+      "holm_rank": {
+        "p_used": 0.9015492253873063,
+        "p_holm": 0.9015492253873063,
+        "p_holm_if_delmas_two_sided": 1.0
+      }
+    },
+    "7 Colasanti guilty vs innocent participant AUC": {
+      "statistic": "participant AUC (mean of rows, mean over repeats)",
+      "observed_delta": 0.059234014930217405,
+      "mean_baseline": 0.6046738072054528,
+      "mean_fixed": 0.6639078221356702,
+      "raw": {
+        "p_two_sided": 0.29035482258870565,
+        "perm_sd": 0.05487776482911949,
+        "perm_mean": -0.0009440116845180147,
+        "n_perm": 2000
+      },
+      "note": "157 participants",
+      "rank": {
+        "observed_delta": 0.0727036676403765,
+        "mean_baseline": 0.605322947095099,
+        "mean_fixed": 0.6780266147354755,
+        "p_two_sided": 0.16741629185407297,
+        "perm_sd": 0.052386730105487195,
+        "perm_mean": -0.0004640944498539445,
+        "n_perm": 2000
+      },
+      "holm_raw": {
+        "p_used": 0.29035482258870565,
+        "p_holm": 0.6776611694152924,
+        "p_holm_if_delmas_two_sided": 0.9035482258870565
+      },
+      "holm_rank": {
+        "p_used": 0.16741629185407297,
+        "p_holm": 0.33483258370814595,
+        "p_holm_if_delmas_two_sided": 0.502248875562219
+      }
+    }
+  },
+  "reproduction": {
+    "Delmas AUC baseline": {
+      "recomputed": 0.7810845165216441,
+      "stored_or_paper": 0.7810845165216443,
+      "match": true
+    },
+    "Delmas AUC fixed pipeline": {
+      "recomputed": 0.7813194299753466,
+      "stored_or_paper": 0.7813194299753468,
+      "match": true
+    },
+    "Delmas delta (paper +0.000)": {
+      "recomputed": 0.00023491345370252326,
+      "stored_or_paper": 0.0,
+      "match": true
+    },
+    "3 Celniak participant AUC AUC baseline": {
+      "recomputed": 0.6078947368421053,
+      "stored_or_paper": 0.6078947368421053,
+      "match": true
+    },
+    "3 Celniak participant AUC AUC fixed pipeline": {
+      "recomputed": 0.4605263157894737,
+      "stored_or_paper": 0.4605263157894737,
+      "match": true
+    },
+    "3 Celniak participant AUC delta": {
+      "recomputed": -0.1473684210526316,
+      "stored_or_paper": -0.1473684210526316,
+      "match": true
+    },
+    "4 Preti eyes only participant AUC AUC baseline": {
+      "recomputed": 0.3802469135802469,
+      "stored_or_paper": 0.3802469135802469,
+      "match": true
+    },
+    "4 Preti eyes only participant AUC AUC fixed pipeline": {
+      "recomputed": 0.5691358024691358,
+      "stored_or_paper": 0.5691358024691358,
+      "match": true
+    },
+    "4 Preti eyes only participant AUC delta": {
+      "recomputed": 0.18888888888888883,
+      "stored_or_paper": 0.18888888888888883,
+      "match": true
+    },
+    "5 Preti with RT participant AUC AUC baseline": {
+      "recomputed": 0.928395061728395,
+      "stored_or_paper": 0.928395061728395,
+      "match": true
+    },
+    "5 Preti with RT participant AUC AUC fixed pipeline": {
+      "recomputed": 0.9641975308641976,
+      "stored_or_paper": 0.9641975308641976,
+      "match": true
+    },
+    "5 Preti with RT participant AUC delta": {
+      "recomputed": 0.03580246913580254,
+      "stored_or_paper": 0.03580246913580254,
+      "match": true
+    },
+    "6 Colasanti group 2 vs 3 participant AUC AUC baseline": {
+      "recomputed": 0.6901315789473684,
+      "stored_or_paper": 0.6901315789473684,
+      "match": true
+    },
+    "6 Colasanti group 2 vs 3 participant AUC AUC fixed pipeline": {
+      "recomputed": 0.6006578947368421,
+      "stored_or_paper": 0.6006578947368421,
+      "match": true
+    },
+    "6 Colasanti group 2 vs 3 participant AUC delta": {
+      "recomputed": -0.08947368421052637,
+      "stored_or_paper": -0.08947368421052637,
+      "match": true
+    },
+    "7 Colasanti guilty vs innocent participant AUC AUC baseline": {
+      "recomputed": 0.6046738072054528,
+      "stored_or_paper": 0.6046738072054528,
+      "match": true
+    },
+    "7 Colasanti guilty vs innocent participant AUC AUC fixed pipeline": {
+      "recomputed": 0.6639078221356702,
+      "stored_or_paper": 0.6639078221356702,
+      "match": true
+    },
+    "7 Colasanti guilty vs innocent participant AUC delta": {
+      "recomputed": 0.059234014930217405,
+      "stored_or_paper": 0.059234014930217405,
+      "match": true
+    },
+    "Chen detection baseline (rate rule)": {
+      "recomputed": 0.42857142857142866,
+      "stored_or_paper": 0.42857142857142866,
+      "match": true
+    },
+    "Chen detection fixed pipeline": {
+      "recomputed": 0.5773809523809523,
+      "stored_or_paper": 0.5773809523809523,
+      "match": true
+    },
+    "Chen detection delta (paper +14.9 points)": {
+      "recomputed": 0.14880952380952367,
+      "stored_or_paper": 0.149,
+      "match": true
+    }
+  },
+  "all_reproduced": true,
+  "chen_note": "Chen detection is a binary decision; no rank transform applies, the rank view reuses the raw result.",
+  "runtime_s": 23.552674770355225
+}

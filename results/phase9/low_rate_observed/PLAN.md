@@ -1,0 +1,43 @@
+# Task 2.2b PLAN: observed-webcam condition for the frame-rate curve (EXPLORATORY, not preregistered)
+
+Written 2026-11-07 after the reproduction check (below) and before any observed-condition result was computed. Answers reviewer comment M2 and parts of M1, M3, M4 (`paper_rec/review/review_1.md`, sections M1-M4 and section 6, item 2). Output folder: `results/phase9/low_rate_observed/`. Nothing outside it is written; existing code is imported unchanged (source stated at the top of each script). One process, one thread (`.venv/Scripts/python.exe -I`, OMP/MKL/OPENBLAS = 1). Language: known item / unknown item. Numbers only; no camera images; `data/external/vdc2024` and `results/phase9/vdc_heldout` are not read.
+
+## Changes requested by the user after the task started (2026-11-06, applied before this plan was written)
+1. Measured parameters come from the EMEET camera sessions only: `test05_faces_K_emeet_glasses`, `test06_faces_I_emeet_glasses`, `test07_twofaces_K_dryrun`, `test08_v1_18trials`, `test09_v1_18trials` (the built-in-camera sessions test01-test04 are not used).
+2. Gains are the EMEET-only medians: horizontal 0.88, vertical 0.79 (re-derived here with the rule of `results/app_pilot/vertical_check/vertical_check.py` from `vertical_check_targets.csv`, base variant, 11 calibration segments: x 0.877, y 0.788; the earlier 0.79 / 0.65 included a built-in-camera session).
+3. The native 17 fps condition is dropped.
+
+## Reproduction check (done first; passed with zero difference)
+Through this folder's code (`s3_repro.py`, nested CV on the frozen folds, written to `checkpoints/`): dwell from samples, no pupil, clean, 30 Hz: 0.7731838961824132 (stored 0.7731838961824132); measured noise 'anch', 30 Hz, mean of 3 draws: 0.7737061625087726 (stored 0.7737061625087726; draws 0.77324, 0.77214, 0.77574). Criterion |difference| < 5e-5. File `repro_values.json`. Also: the 1000 Hz arrays reloaded here, passed through `edd.delmas_raw.degrade` at 30 Hz, equal the earlier 30 Hz cache for all 75 participants (max difference 0.0; `repro_raw_reload.json`).
+
+## Data and models (unchanged from Task 2.2)
+Delmas et al. EyeLink 1000 Hz recordings, 75 participants, six group sets, frozen folds (`results/phase2/delmas_raw/folds.json`), nested L2 logistic regression, image-level AUC pooled within each set, mean over sets (`results/phase9/low_rate/lr_common.py`, `s4_webcam.py`). Two measures, both without pupil features: dwell from samples (10 features; "camera model") and fixed-threshold I-VT 30 deg/s, 60 ms (11 features). Three noise draws (1, 2, 3); a condition's AUC is the mean over draws. Rates 30, 20, 15, 10 Hz.
+
+## Conditions
+Existing (read from `results/phase9/low_rate/checkpoints_webcam`, not rerun): clean; simulated measured noise 'anch' (1.45 deg mean offset per participant, white jitter SD 1.66/sqrt2 and 1.42/sqrt2 deg per axis, 3% sample loss).
+New: observed webcam, (O1) without per-trial offset correction, (O2) with the app's correction. Plus a pipeline sanity check (regular frame times, no error; one draw).
+
+## Observed-webcam simulation (applied to the 1000 Hz signal, then features; `s2_sim.py`)
+Per participant, trial and rate:
+1. Gaps in the signal are linearly filled and the signal low-pass filtered with the anti-alias design of `edd.delmas_raw.degrade` (Kaiser beta 5, cutoff rate/2), a missing frame follows `degrade`'s rule (any original sample missing within half a nominal period).
+2. Frame times: consecutive inter-frame gaps taken in blocks from the five EMEET sessions (`measured/gaps_*.npy`; 50,620 gaps, mean 33.39 ms = 29.95 fps, median 32.0 ms, 5th-95th percentile 30.0-48.0 ms, maximum 81.9 ms; 8.0% of gaps exceed 1.4 x the median, i.e. dropped or delayed frames). The block is scaled so its mean gap is 1000/rate ms (rates 20, 15, 10 keep the same relative gap pattern: an assumption), random start phase. The filtered 1000 Hz signal is read at these irregular times (this is timing applied to the 1000 Hz signal, not decimation of a resampled signal). Frames are put on the uniform grid of that rate with the app's own `to_grid` (`app/features.py`), then the s4 feature code runs. (At 15 Hz the module constant POST_MS is raised by 34 ms during the call so the grid has the same 83 points as `degrade`; module attribute only.)
+3. Gain: x' = 960 + 0.88 (x - 960), y' = 540 + 0.79 (y - 540) (screen centre of the Delmas layout).
+4. Per-trial offset: drawn independently per trial (pair of x, y) from the empirical joint distribution of the logged `drift_dx_px`, `drift_dy_px` of 79 scored trials with a passed drift check in the five sessions (converted with each session's `px_per_deg`; the gaze offset is minus the logged correction). Magnitude: median 2.53, mean 2.64, 10th-90th percentile 1.12-4.24, range 0.32-5.90 deg. Six of 85 scored trials failed the check (3 above 6 deg, 3 too few frames) and are not in the distribution, so the uncorrected condition is slightly optimistic. The same offsets are used at every rate.
+5. Jitter with autocorrelation: per-axis sum of two exponential (Ornstein-Uhlenbeck) components sampled at the frame times (exact AR(1) recursion with phi = exp(-gap / tau), valid for irregular times), fitted by simulation to the measured residuals around each dot's median (settled part: first 0.7 s dropped as in the app, valid frames; 156 dots, 6,131 samples in the five sessions; one dot with residual RMS above 20 deg, a tracking failure in test07, is excluded and listed). Matched statistics (data -> simulation, fresh 1,000 replicates): x SD 2.09 -> 2.10, lag 1-5 autocorrelation .683 .627 .531 .455 .361 -> .692 .607 .525 .447 .372, RMS sample-to-sample 1.587 -> 1.584 deg; y SD 1.53 -> 1.54, lags .580 .540 .415 .350 .248 -> .596 .504 .418 .340 .267, RMS 1.359 -> 1.349 deg. Kaduk et al. (2024): 1.66 / 1.42 deg. A single exponential cannot match lags 1-5 and the RMS together (reported in `measured/jitter_model.json`). Axes independent (measured lag-0 correlation 0.07), Gaussian marginals (measured excess kurtosis about 16-22: heavier tails than simulated).
+6. Loss: per trial a loss probability drawn from the empirical distribution of 1 - `valid_share` (85 scored trials; mean 5.2%), independent per frame (real losses are bursty; not simulated).
+7. Correction (O2): the app's rule (`app/protocol.py drift_from_frames`): offset = cross - median of the valid frames of the pre-trial fixation; refused (offset 0, trial kept) if fewer than 8/15 of the expected frames or larger than 6 deg (`drift_max_deg`). Window: the pre-display interval of the Delmas arrays [-500, -100) ms (the app uses 0.4 s to 0.9 s of a 1 s fixation); minimum frames = ceil(8/15 x expected frames in 400 ms). The correction is measured with the simulated noise (gain, offset, jitter, loss, timing) over this window and added to every frame of the trial.
+
+## Missing pieces
+Clean dwell curve (2 x 2 completion), dwell minus I-VT at 10 Hz under measured noise (with interval), EER and HTER at each rate for the camera model (the nested-CV track's image-level and participant-level values, mean over draws).
+
+## Tests (all exploratory, paired participant-cluster bootstrap, 2000 resamples, seed 20261102, same resamples for every configuration)
+- Change from 30 Hz (same measure and condition) with 95% interval (percentile, all 2000); AUC interval from the first 300 resamples (as in the earlier tables).
+- Dwell minus I-VT at the same rate and condition, 95% interval.
+- One-sided non-inferiority against a 0.02 AUC margin, 30 -> 20, 15, 10 Hz, camera model, under simulated measured noise, observed webcam without and with correction (and clean for reference): lower one-sided 95% bound = 5th percentile of the paired differences; p = (1 + #{difference <= -0.02}) / 2001 (the formula of `scripts/phase6_trackC_c1.py`). No multiplicity correction.
+- Paired contrasts: with minus without correction; observed minus simulated noise; each minus clean; the regular-timing check minus clean.
+- Check: the recomputed stored rows (clean and 'anch') must reproduce `low_rate/rows_webcam.csv` (same seed and resamples).
+
+## Decision wording (fixed now)
+- "within the 0.02 margin (exploratory)": the lower one-sided 95% bound of the change from 30 Hz is above -0.02. Otherwise "not shown within the margin" (a point estimate inside the margin with a bound below it is reported as such). No wording of "no change".
+- Every number is labelled exploratory and simulated (the frame rates are simulated by timing applied to 1000 Hz recordings; the error model is built from five EMEET sessions of one person; the Delmas viewers are different people from the webcam person).
+- No condition is called "best"; conditions are reported side by side.

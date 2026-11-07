@@ -1,0 +1,17 @@
+\begin{table}[!htbp]
+\caption{Design-step ablation, Delmas et al. Image-level AUC; each step compared with the row above (95\% interval, two-sided $p$, descriptive).}\label{tab:ablation}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Step & AUC & $\Delta$ vs previous step [95\% CI] & $p$ \\
+\midrule
+Published four features, SVM, 1000 Hz & 0.781 & --- & --- \\
+Same four features, logistic regression & 0.781 & $-0.000$ [$-0.009$, $+0.008$] & .99 \\
++ time bins, pupil and first look & 0.781 & $+0.001$ [$-0.009$, $+0.011$] & .88 \\
++ standardisation within each participant & 0.793 & $+0.012$ [$-0.001$, $+0.022$] & .08 \\
+Same model at 30 Hz & 0.785 & $-0.008$ [$-0.020$, $+0.004$] & .23 \\
+\midrule
+All steps at 1000 Hz vs published model & & $+0.012$ [$-0.004$, $+0.026$] & .15 \\
+\bottomrule
+\end{tabular}
+\end{table}

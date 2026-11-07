@@ -1,0 +1,19 @@
+\begin{table}[!htbp]
+\caption{Datasets and their role. Development datasets were used to build the pipeline; the external dataset was used only for the preregistered test.}\label{tab:datasets}
+\scriptsize\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{1.1cm}>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{2.6cm}@{}}
+\toprule
+Dataset & Sensor, rate & People & Task: what is known & Case of unknown items \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Development}} \\
+\citet{delmas2024} & EyeLink 1000, 1000~Hz, chin rest & 75 & Famous faces among unknown faces, four at a time; some groups told to use countermeasures & Same person's unknown faces \\
+\citet{chen2026} & EyeLink 1000, released at 100~Hz & 29 + 27 (two experiments) & Own parent's face among unfamiliar faces & Same person's two unfamiliar faces \\
+\citet{celniak2026scirep} & Tobii Pro Fusion, 250~Hz (one 120~Hz), head free & 39 & Details of a mock crime, seen minutes earlier & 19 people who did not see them \\
+\citet{colasanti2024} & RealEye webcam, 60~Hz, online & 157 (four groups) & Crime-scene images & People who did not see them \\
+\citet{preti2026} & Eye tracker (model and rate not reported) & 57 & A rehearsed fake identity, under load (a lying task, marked separately) & 30 truthful people \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{External test, not used in development}} \\
+\citet{vandercruyssen2024jarmac} & EyeLink 1000, 1000~Hz; deposited as per-trial summaries & 133 & Items of a mock crime, four at a time & 46 people who never saw them; 45 who read about them know them too \\
+\bottomrule
+\end{tabular}
+\end{table}

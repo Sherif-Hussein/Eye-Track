@@ -1,0 +1,36 @@
+- 23:52:08 book_svm: mean AUC 0.995 EER 0.016 HTER 0.020; countermeasure/concealment sets AUC 0.993
+- 23:54:52 P4_svm_1000: mean AUC 0.776 EER 0.278 HTER 0.276; countermeasure/concealment sets AUC 0.726
+- 23:58:07 P4_svm_500: mean AUC 0.780 EER 0.273 HTER 0.273; countermeasure/concealment sets AUC 0.731
+- 00:00:43 P4_svm_250: mean AUC 0.778 EER 0.276 HTER 0.274; countermeasure/concealment sets AUC 0.728
+- 00:03:37 P4_svm_120: mean AUC 0.773 EER 0.272 HTER 0.271; countermeasure/concealment sets AUC 0.721
+- 00:09:01 P4_svm_60: mean AUC 0.770 EER 0.279 HTER 0.271; countermeasure/concealment sets AUC 0.718
+- 00:11:45 P4_svm_30: mean AUC 0.769 EER 0.280 HTER 0.276; countermeasure/concealment sets AUC 0.714
+- 00:13:03 ALLz_lr_1000: mean AUC 0.789 EER 0.264 HTER 0.260; countermeasure/concealment sets AUC 0.743
+- 00:13:57 ALLz_lr_500: mean AUC 0.791 EER 0.261 HTER 0.260; countermeasure/concealment sets AUC 0.746
+- 00:15:07 ALLz_lr_250: mean AUC 0.789 EER 0.262 HTER 0.259; countermeasure/concealment sets AUC 0.741
+- 00:16:18 ALLz_lr_120: mean AUC 0.789 EER 0.261 HTER 0.258; countermeasure/concealment sets AUC 0.741
+- 00:17:10 ALLz_lr_60: mean AUC 0.790 EER 0.261 HTER 0.258; countermeasure/concealment sets AUC 0.742
+- 00:18:29 ALLz_lr_30: mean AUC 0.781 EER 0.266 HTER 0.262; countermeasure/concealment sets AUC 0.731
+- 00:20:00 P4+bins_lr_1000: mean AUC 0.781 EER 0.271 HTER 0.270; countermeasure/concealment sets AUC 0.730
+- 00:21:24 NEW_lr_1000: mean AUC 0.523 EER 0.476 HTER 0.481; countermeasure/concealment sets AUC 0.497
+- 00:22:33 pupil_only_lr_1000: mean AUC 0.511 EER 0.492 HTER 0.495; countermeasure/concealment sets AUC 0.494
+- 00:23:39 firstlook_only_lr_1000: mean AUC 0.532 EER 0.474 HTER 0.476; countermeasure/concealment sets AUC 0.505
+- 00:24:54 P4+NEW_lr_1000: mean AUC 0.776 EER 0.273 HTER 0.270; countermeasure/concealment sets AUC 0.725
+- 00:26:22 ALL_lr_1000: mean AUC 0.779 EER 0.273 HTER 0.270; countermeasure/concealment sets AUC 0.726
+- 00:27:29 P4_z_lr_1000: mean AUC 0.790 EER 0.260 HTER 0.257; countermeasure/concealment sets AUC 0.746
+- 00:30:34 P4_z_svm_1000: mean AUC 0.789 EER 0.259 HTER 0.257; countermeasure/concealment sets AUC 0.743
+- 00:31:55 ALL_z_lr_1000: mean AUC 0.789 EER 0.264 HTER 0.260; countermeasure/concealment sets AUC 0.743
+- 00:35:32 ALL_z_svm_1000: mean AUC 0.781 EER 0.266 HTER 0.264; countermeasure/concealment sets AUC 0.727
+- 00:36:33 P4_lr_1000: mean AUC 0.779 EER 0.275 HTER 0.274; countermeasure/concealment sets AUC 0.730
+- 00:36:57 transfer_P4_lr_1000
+- 00:37:12 transfer_P4_lr_60
+- 00:37:25 transfer_P4_z_lr_1000
+- 00:37:39 transfer_P4_z_lr_60
+- 00:37:53 transfer_ALL_z_lr_1000
+- 00:38:14 transfer_ALL_z_lr_60
+- 00:39:04 transfer_book_svm_1000
+- 00:40:03 P4_lgbm_1000: mean AUC 0.757 EER 0.302 HTER 0.293; countermeasure/concealment sets AUC 0.700
+- 00:41:45 ALLz_lgbm_1000: mean AUC 0.780 EER 0.278 HTER 0.273; countermeasure/concealment sets AUC 0.728
+- 04:57:07 permutation_P4_lr_1000
+- 04:57:28 identity_probe
+- 05:02:17 efficiency

@@ -1,0 +1,15 @@
+\begin{table}[!htbp]
+\caption{Like-for-like timing on Delmas et al. Median latency per participant (ms), with the 95th percentile in brackets; one participant, single thread, ten interleaved rounds.}\label{tab:S_timing}
+\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Model & 1000~Hz, original code & 1000~Hz, vectorised & 30~Hz, original code & 30~Hz, vectorised \\
+\midrule
+Published model (four features, SVM) & 198.4 (520) & 66.5 (145) & 116.5 (209) & 15.7 (33.7) \\
+Our pipeline (logistic regression) & 241.5 (424) & 93.0 (131) & 99.7 (113) & 3.13 (3.98) \\
+\midrule
+\multicolumn{5}{@{}l}{Total speed-up, published model at 1000~Hz with original code to ours at 30~Hz vectorised: 63$\times$ [55, 93]} \\
+\multicolumn{5}{@{}l}{Average factor over all orders: sampling rate 5.5$\times$ [5.2, 6.2]; feature code 7.5$\times$ [7.0, 8.4]; model 1.6$\times$ [1.4, 1.8]} \\
+\bottomrule
+\end{tabular}
+\end{table}

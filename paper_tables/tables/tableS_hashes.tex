@@ -1,0 +1,33 @@
+\begin{table}[!htbp]
+\caption{Analysis-plan files. Time of writing and SHA-256 hash (first 16 hex digits) of every plan, amendment and deviation log behind the analyses of the main paper; full hashes are with the deposited code. The plans down to ``Cost and thresholds'' were written before the confirmatory run of the same analysis, but after screening on the same data; the later plans are exploratory and were written before the runs they describe, except the addendum on averaging two classifiers, written after a first look at the data. The frame-rate curves and the stacking check have no plan file. The preregistration of the held-out test is on the Open Science Framework (anonymised link provided for review).}\label{tab:hashes}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.2cm}>{\raggedright\arraybackslash}p{6.2cm}lc@{}}
+\toprule
+Analysis & File & Written & SHA-256 (first 16) \\
+\midrule
+Chen et al.: planned test of the pupil-and-gaze model & \path{results/phase3/chen_confirm/PREREG.md} & 2026-11-02 06:42 & \texttt{4da28461bef04849} \\
+ & \path{results/phase3/chen_confirm/FREEZE.md} & 2026-11-02 06:43 & \texttt{166395a85102c40e} \\
+ & \path{results/phase3/chen_confirm/DEVIATIONS.md} & 2026-11-02 07:03 & \texttt{d5cd14eb876b9205} \\
+Simulated webcam error, Delmas et al. & \path{results/phase3/webcam_noise/PREREG.md} & 2026-11-02 06:43 & \texttt{19e11b9ab577af80} \\
+Seven planned comparisons on the development datasets & \path{results/phase4/unified/PREREG.md} & 2026-11-02 08:31 & \texttt{8395dea5b986077d} \\
+ & \path{results/phase4/unified/GO_AHEAD.txt} & 2026-11-02 08:31 & \texttt{8d2c85a51273aa09} \\
+ & \path{results/phase4/unified/DEVIATIONS.md} & 2026-11-02 09:06 & \texttt{de9ceeb948bb26eb} \\
+Re-analyses of stored scores (AUC definitions, realised false-alarm rates) & \path{results/phase6/trackA/PREREG.md} & 2026-11-02 14:08 & \texttt{8f68ff83489d3002} \\
+ & \path{results/phase6/trackA/DEVIATIONS.md} & 2026-11-02 14:33 & \texttt{53b41ce931a1bf42} \\
+Tests that refit the whole pipeline on permuted labels & \path{results/phase6/trackB/PREREG.md} & 2026-11-02 15:15 & \texttt{59bfba3b20eff018} \\
+ & \path{results/phase6/trackB/DEVIATIONS.md} & 2026-11-03 05:08 & \texttt{e37aa656079aa338} \\
+Dwell from samples without event detection, under webcam noise & \path{results/phase6/trackC/PREREG.md} & 2026-11-02 14:07 & \texttt{781e5ea39f0f3785} \\
+ & \path{results/phase6/trackC/DEVIATIONS.md} & 2026-11-02 16:56 & \texttt{3e933083a6a888e5} \\
+No-pupil and smaller-item simulations & \path{results/phase7/trackD/PREREG.md} & 2026-11-02 21:24 & \texttt{f0c2ae1504333ad2} \\
+ & \path{results/phase7/trackD/DEVIATIONS.md} & 2026-11-03 05:15 & \texttt{5d186249ecf48242} \\
+Cost and thresholds & \path{results/phase7/trackE/PREREG.md} & 2026-11-02 21:28 & \texttt{feaf34c5dd4ae0c2} \\
+ & \path{results/phase7/trackE/DEVIATIONS.md} & 2026-11-03 05:26 & \texttt{50411b3dc42a482a} \\
+Other models and features (exploratory plan) & \path{results/phase10/model_search/PLAN.md} & 2026-11-06 07:29 & \texttt{4c1b577663813756} \\
+Other classifiers on the same folds (exploratory plan) & \path{results/phase10/model_compare/PLAN.md} & 2026-11-07 00:06 & \texttt{6399b232b9ee7b28} \\
+Average of two classifiers (exploratory addendum) & \path{results/phase10/model_compare/ADDENDUM_ensemble.md} & 2026-11-07 05:23 & \texttt{f79f4572f9bdc388} \\
+Observed-webcam condition (exploratory plan) & \path{results/phase9/low_rate_observed/PLAN.md} & 2026-11-07 00:24 & \texttt{f735ed8c5f68fbf0} \\
+Slow-jitter version of the observed condition (exploratory plan) & \path{results/phase9/low_rate_observed/sensitivity/PLAN.md} & 2026-11-07 06:12 & \texttt{d00085cb7aa711ca} \\
+Classifiers on the observed-webcam data (exploratory plans) & \path{results/phase10/model_compare_observed/PLAN.md} & 2026-11-07 06:14 & \texttt{ee13b402696cb710} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,21 @@
+\begin{table}[!htbp]
+\caption{Cost of one decision on one laptop core: scoring time (median of six interleaved rounds), peak memory and model size (Python pickle). ``Published'': the cited study's method as we re-implemented it.}\label{tab:cost}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Time (ms)} & & \multicolumn{2}{c}{Model size (bytes)} & \multicolumn{2}{c}{Peak memory (kB)} \\
+\cmidrule{2-3}\cmidrule{5-6}\cmidrule{7-8}
+Study & Published & Ours & Speed-up & Published & Ours & Published & Ours \\
+\midrule
+\citet{delmas2024} & 183.2 & 3.2 & 58$\times$ & 110,953 & 719 & 612 & 961 \\
+Same, equally fast code$^{a}$ & & & 21$\times$ & & & & \\
+\citet{celniak2026scirep} & 912.1 & 9.7 & 94$\times$ & 126,285 & 911 & 85,501 & 4,351 \\
+\citet{preti2026}, with reaction time & 36.5 & 0.36 & 102$\times$ & 1,650 & 1,455 & 142 & 7.2 \\
+\citet{colasanti2024} & 0.46 & 0.29 & 1.6$\times$ & 953 & 1,455 & 11.9 & 5.2 \\
+\citet{chen2026} & 6.6 & 14.2 & 0.46$\times$ & 24 & 2,703 & 16 & 415 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\scriptsize
+$^{a}$ Both methods with feature code that works on whole arrays.
+\end{flushleft}
+\end{table}
